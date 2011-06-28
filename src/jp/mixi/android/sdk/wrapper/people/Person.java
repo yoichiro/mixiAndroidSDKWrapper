@@ -1,6 +1,6 @@
 package jp.mixi.android.sdk.wrapper.people;
 
-import jp.mixi.android.sdk.wrapper.Entity;
+import jp.mixi.android.sdk.wrapper.Model;
 
 import org.json.JSONObject;
 
@@ -9,7 +9,7 @@ import org.json.JSONObject;
  * @author Yoichiro Tanaka
  *
  */
-public class Person extends Entity {
+public class Person extends Model {
 
     /**
      * 指定された情報でこのインスタンスを初期化します.
@@ -24,7 +24,7 @@ public class Person extends Entity {
      * @return ID
      */
     public String getId() {
-        return getString("id");
+        return getPropertyString("id");
     }
 
     /**
@@ -32,7 +32,7 @@ public class Person extends Entity {
      * @return ニックネーム
      */
     public String getDisplayName() {
-        return getString("displayName");
+        return getPropertyString("displayName");
     }
 
     /**
@@ -40,7 +40,7 @@ public class Person extends Entity {
      * @return プロフィール画像のURL
      */
     public String getThumbnailUrl() {
-        return getString("thumbnailUrl");
+        return getPropertyString("thumbnailUrl");
     }
 
     /**
@@ -48,7 +48,7 @@ public class Person extends Entity {
      * @return プロフィールページのURL
      */
     public String getProfileUrl() {
-        return getString("profileUrl");
+        return getPropertyString("profileUrl");
     }
 
 }
