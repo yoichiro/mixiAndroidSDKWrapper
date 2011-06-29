@@ -1,4 +1,4 @@
-package jp.mixi.android.sdk.wrapper.photo;
+package jp.mixi.android.sdk.wrapper;
 
 /**
  * 公開範囲を指定します.

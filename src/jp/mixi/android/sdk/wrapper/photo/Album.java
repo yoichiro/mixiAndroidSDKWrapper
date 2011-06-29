@@ -1,5 +1,7 @@
 package jp.mixi.android.sdk.wrapper.photo;
 
+import jp.mixi.android.sdk.wrapper.Privacy;
+
 import org.json.JSONObject;
 
 /**
