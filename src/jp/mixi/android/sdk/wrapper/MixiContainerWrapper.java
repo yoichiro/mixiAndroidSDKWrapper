@@ -2,6 +2,7 @@ package jp.mixi.android.sdk.wrapper;
 
 import jp.mixi.android.sdk.wrapper.people.GetPeopleCallbackHandler;
 import jp.mixi.android.sdk.wrapper.people.GetPeopleParams;
+import jp.mixi.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
 import jp.mixi.android.sdk.wrapper.request.SendRequestCallbackHandler;
 import jp.mixi.android.sdk.wrapper.request.SendRequestParams;
 import android.content.Context;
@@ -13,6 +14,8 @@ import android.content.Context;
  *
  */
 public interface MixiContainerWrapper {
+
+    // --- mixiアプリ向けリクエストAPI
 
     /**
      * mixiアプリ向けに提供されているリクエスト送信APIを呼び出します.
@@ -34,6 +37,8 @@ public interface MixiContainerWrapper {
             String[] requestIds,
             CallbackAdapter handler);
 
+    // --- People API
+
     /**
      * 認可ユーザのプロフィール情報を取得します.
      * @param handler 処理結果を受け取るためのコールバックリスナ
@@ -52,5 +57,55 @@ public interface MixiContainerWrapper {
      * @param handler 処理結果を受け取るためのコールバックリスナ
      */
     void getFriends(GetPeopleParams params, GetPeopleCallbackHandler handler);
+
+    // - Photo API
+
+    /**
+     * 認可ユーザが持つアルバムの一覧を取得します.
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getMyAlbums(GetAlbumsCallbackHandler handler);
+
+    /**
+     * 認可ユーザが持つアルバムの情報を取得します.
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getMyAlbum(String albumId, GetAlbumsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人が持つアルバムの一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendAlbums(String userId, GetAlbumsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人が持つアルバムの一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param accessKey アルバムにつけられた合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendAlbums(String userId, String accessKey,
+            GetAlbumsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人が持つアルバムの情報を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendAlbum(String userId, String albumId,
+            GetAlbumsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人が持つアルバムの情報を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param accessKey アルバムにつけられた合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendAlbum(String userId, String albumId, String accessKey,
+            GetAlbumsCallbackHandler handler);
 
 }
