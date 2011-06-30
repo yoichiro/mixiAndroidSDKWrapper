@@ -14,7 +14,7 @@ import android.content.Context;
  * @author Yoichiro Tanaka
  *
  */
-public interface MixiContainerWrapper {
+public interface MixiWrapper {
 
     // --- mixiアプリ向けリクエストAPI
 

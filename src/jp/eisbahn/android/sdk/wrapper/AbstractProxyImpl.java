@@ -7,7 +7,7 @@ import jp.mixi.android.sdk.MixiContainer;
  * @author Yoichiro Tanaka
  *
  */
-public abstract class AbstractContainerImpl {
+public abstract class AbstractProxyImpl {
 
     /** MixiContainerオブジェクト. */
     private MixiContainer container;
@@ -16,7 +16,7 @@ public abstract class AbstractContainerImpl {
      * 指定されたパラメータでこのインスタンスを初期化します.
      * @param newContainer MixiContainerオブジェクト
      */
-    public AbstractContainerImpl(final MixiContainer newContainer) {
+    public AbstractProxyImpl(final MixiContainer newContainer) {
         super();
         this.container = newContainer;
     }

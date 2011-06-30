@@ -3,7 +3,7 @@ package jp.eisbahn.android.sdk.wrapper.photo;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractContainerImpl;
+import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
 import jp.mixi.android.sdk.MixiContainer;
 import android.util.Log;
 
@@ -12,13 +12,13 @@ import android.util.Log;
  * @author Yoichiro Tanaka
  *
  */
-public class PhotoContainerImpl extends AbstractContainerImpl {
+public class PhotoProxyImpl extends AbstractProxyImpl {
 
     /**
      * このインスタンスを初期化します.
      * @param newContainer コンテナオブジェクト
      */
-    public PhotoContainerImpl(final MixiContainer newContainer) {
+    public PhotoProxyImpl(final MixiContainer newContainer) {
         super(newContainer);
     }
 

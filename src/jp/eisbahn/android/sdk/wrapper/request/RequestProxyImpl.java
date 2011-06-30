@@ -3,7 +3,7 @@ package jp.eisbahn.android.sdk.wrapper.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractContainerImpl;
+import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 import jp.mixi.android.sdk.HttpMethod;
 import jp.mixi.android.sdk.MixiContainer;
@@ -14,13 +14,13 @@ import android.content.Context;
  * @author Yoichiro Tanaka
  *
  */
-public class RequestContainerImpl extends AbstractContainerImpl {
+public class RequestProxyImpl extends AbstractProxyImpl {
 
     /**
      * 指定されたパラメータでこのインスタンスを初期化します.
      * @param newContainer MixiContainerオブジェクト
      */
-    public RequestContainerImpl(final MixiContainer newContainer) {
+    public RequestProxyImpl(final MixiContainer newContainer) {
         super(newContainer);
     }
 
