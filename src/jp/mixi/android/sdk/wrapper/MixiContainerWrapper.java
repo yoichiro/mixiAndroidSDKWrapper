@@ -3,6 +3,7 @@ package jp.mixi.android.sdk.wrapper;
 import jp.mixi.android.sdk.wrapper.people.GetPeopleCallbackHandler;
 import jp.mixi.android.sdk.wrapper.people.GetPeopleParams;
 import jp.mixi.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
+import jp.mixi.android.sdk.wrapper.photo.GetPhotosCallbackHandler;
 import jp.mixi.android.sdk.wrapper.request.SendRequestCallbackHandler;
 import jp.mixi.android.sdk.wrapper.request.SendRequestParams;
 import android.content.Context;
@@ -90,7 +91,7 @@ public interface MixiContainerWrapper {
             GetAlbumsCallbackHandler handler);
 
     /**
-     * 認可ユーザの友人が持つアルバムの情報を取得します.
+     * 認可ユーザの特定の友人が持つアルバムの情報を取得します.
      * @param userId 友人のユーザID
      * @param albumId アルバムID
      * @param handler 処理結果を受け取るためのコールバックリスナ
@@ -99,7 +100,7 @@ public interface MixiContainerWrapper {
             GetAlbumsCallbackHandler handler);
 
     /**
-     * 認可ユーザの友人が持つアルバムの情報を取得します.
+     * 認可ユーザの特定の友人が持つアルバムの情報を取得します.
      * @param userId 友人のユーザID
      * @param albumId アルバムID
      * @param accessKey アルバムにつけられた合い言葉
@@ -107,5 +108,27 @@ public interface MixiContainerWrapper {
      */
     void getFriendAlbum(String userId, String albumId, String accessKey,
             GetAlbumsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人が最近作成したアルバムの一覧を取得します.
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendsAlbums(GetAlbumsCallbackHandler handler);
+
+    /**
+     * 認可ユーザのフォトの一覧を取得します.
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getMyPhotos(String albumId, GetPhotosCallbackHandler handler);
+
+    /**
+     * 認可ユーザのフォトの情報を取得します.
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getMyPhoto(String albumId, String mediaItemId,
+            GetPhotosCallbackHandler handler);
 
 }

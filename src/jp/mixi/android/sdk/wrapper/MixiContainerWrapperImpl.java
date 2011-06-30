@@ -5,6 +5,7 @@ import jp.mixi.android.sdk.wrapper.people.GetPeopleCallbackHandler;
 import jp.mixi.android.sdk.wrapper.people.GetPeopleParams;
 import jp.mixi.android.sdk.wrapper.people.PeopleContainerImpl;
 import jp.mixi.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
+import jp.mixi.android.sdk.wrapper.photo.GetPhotosCallbackHandler;
 import jp.mixi.android.sdk.wrapper.photo.PhotoContainerImpl;
 import jp.mixi.android.sdk.wrapper.request.RequestContainerImpl;
 import jp.mixi.android.sdk.wrapper.request.SendRequestCallbackHandler;
@@ -100,6 +101,23 @@ public class MixiContainerWrapperImpl implements MixiContainerWrapper {
     public void getFriendAlbum(final String userId, final String albumId,
             final String accessKey, final GetAlbumsCallbackHandler handler) {
         photoContainer.getFriendAlbum(userId, albumId, accessKey, handler);
+    }
+
+    @Override
+    public void getFriendsAlbums(final GetAlbumsCallbackHandler handler) {
+        photoContainer.getFriendsAlbums(handler);
+    }
+
+    @Override
+    public void getMyPhotos(final String albumId,
+            final GetPhotosCallbackHandler handler) {
+        photoContainer.getMyPhotos(albumId, handler);
+    }
+
+    @Override
+    public void getMyPhoto(final String albumId, final String mediaItemId,
+            final GetPhotosCallbackHandler handler) {
+        photoContainer.getMyPhoto(albumId, mediaItemId, handler);
     }
 
 }

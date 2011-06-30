@@ -28,7 +28,7 @@ public class PhotoContainerImpl extends AbstractContainerImpl {
      * @param handler 処理結果を受け取るためのコールバックリスナ
      */
     public void getMyAlbums(final GetAlbumsCallbackHandler handler) {
-        getContainer().send("/albums/@me/@self", handler);
+        getContainer().send("/photo/albums/@me/@self", handler);
     }
 
     /**
@@ -38,7 +38,7 @@ public class PhotoContainerImpl extends AbstractContainerImpl {
      */
     public void getMyAlbum(final String albumId,
             final GetAlbumsCallbackHandler handler) {
-        getContainer().send("/albums/@me/@self/" + albumId, handler);
+        getContainer().send("/photo/albums/@me/@self/" + albumId, handler);
     }
 
     /**
@@ -48,7 +48,7 @@ public class PhotoContainerImpl extends AbstractContainerImpl {
      */
     public void getFriendAlbums(final String userId,
             final GetAlbumsCallbackHandler handler) {
-        getContainer().send("/albums/" + userId + "/@self", handler);
+        getContainer().send("/photo/albums/" + userId + "/@self", handler);
     }
 
     /**
@@ -61,7 +61,7 @@ public class PhotoContainerImpl extends AbstractContainerImpl {
             final GetAlbumsCallbackHandler handler) {
         try {
             String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
-            getContainer().send("/albums/" + userId
+            getContainer().send("/photo/albums/" + userId
                     + "/@self?accessKey=" + encodedAccessKey, handler);
         } catch (UnsupportedEncodingException e) {
             Log.e("PhotoContainerImpl", e.getMessage(), e);
@@ -77,7 +77,7 @@ public class PhotoContainerImpl extends AbstractContainerImpl {
      */
     public void getFriendAlbum(final String userId, final String albumId,
             final GetAlbumsCallbackHandler handler) {
-        getContainer().send("/albums/" + userId + "/@self/" + albumId, handler);
+        getContainer().send("/photo/albums/" + userId + "/@self/" + albumId, handler);
     }
 
     /**
@@ -91,13 +91,43 @@ public class PhotoContainerImpl extends AbstractContainerImpl {
             final String accessKey, final GetAlbumsCallbackHandler handler) {
         try {
             String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
-            getContainer().send("/albums/" + userId
+            getContainer().send("/photo/albums/" + userId
                     + "/@self/" + albumId + "?accessKey="
                     + encodedAccessKey, handler);
         } catch (UnsupportedEncodingException e) {
             Log.e("PhotoContainerImpl", e.getMessage(), e);
             throw new IllegalStateException(e);
         }
+    }
+
+    /**
+     * 認可ユーザの友人が最近作成したアルバムの一覧を取得します.
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    public void getFriendsAlbums(final GetAlbumsCallbackHandler handler) {
+        getContainer().send("/photo/albums/@me/@friends", handler);
+    }
+
+    /**
+     * 認可ユーザのフォトの一覧を取得します.
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    public void getMyPhotos(final String albumId,
+            final GetPhotosCallbackHandler handler) {
+        getContainer().send("/photo/mediaItems/@me/@self/" + albumId, handler);
+    }
+
+    /**
+     * 認可ユーザのフォトの情報を取得します.
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    public void getMyPhoto(final String albumId, final String mediaItemId,
+            final GetPhotosCallbackHandler handler) {
+        getContainer().send("/photo/mediaItems/@me/@self/" + albumId
+                + "/" + mediaItemId, handler);
     }
 
 }
