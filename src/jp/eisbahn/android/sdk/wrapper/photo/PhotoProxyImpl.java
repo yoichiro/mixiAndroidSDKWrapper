@@ -130,4 +130,71 @@ public class PhotoProxyImpl extends AbstractProxyImpl {
                 + "/" + mediaItemId, handler);
     }
 
+    /**
+     * 認可ユーザの特定の友人のフォトの一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    public void getFriendPhotos(final String userId, final String albumId,
+            final GetPhotosCallbackHandler handler) {
+        getContainer().send("/photo/mediaItems/" + userId
+                + "/@self/" + albumId, handler);
+    }
+
+    /**
+     * 認可ユーザの特定の友人のフォトの一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param accessKey 合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    public void getFriendPhotos(final String userId, final String albumId,
+            final String accessKey, final GetPhotosCallbackHandler handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            getContainer().send("/photo/mediaItems/" + userId
+                    + "/@self/" + albumId + "?accessKey="
+                    + encodedAccessKey, handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    /**
+     * 認可ユーザの特定の友人のフォトの情報を返します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    public void getFriendPhoto(final String userId, final String albumId,
+            final String mediaItemId, final GetPhotosCallbackHandler handler) {
+        getContainer().send("/photo/mediaItems/" + userId
+                + "/@self/" + albumId + "/" + mediaItemId, handler);
+    }
+
+    /**
+     * 認可ユーザの特定の友人のフォトの情報を返します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param accessKey 合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    public void getFriendPhoto(final String userId, final String albumId,
+            final String mediaItemId, final String accessKey,
+            final GetPhotosCallbackHandler handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            getContainer().send("/photo/mediaItems/" + userId
+                    + "/@self/" + albumId + "/" + mediaItemId + "?accessKey="
+                    + encodedAccessKey, handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
 }

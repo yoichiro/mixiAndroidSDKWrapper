@@ -131,4 +131,44 @@ public interface MixiWrapper {
     void getMyPhoto(String albumId, String mediaItemId,
             GetPhotosCallbackHandler handler);
 
+    /**
+     * 認可ユーザの特定の友人のフォトの一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendPhotos(String userId, String albumId,
+            GetPhotosCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトの一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param accessKey 合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendPhotos(String userId, String albumId, String accessKey,
+            GetPhotosCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトの情報を返します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendPhoto(String userId, String albumId, String mediaItemId,
+            GetPhotosCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトの情報を返します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param accessKey 合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendPhoto(String userId, String albumId, String mediaItemId,
+            String accessKey, GetPhotosCallbackHandler handler);
+
 }

@@ -120,4 +120,30 @@ public class MixiWrapperImpl implements MixiWrapper {
         photoProxy.getMyPhoto(albumId, mediaItemId, handler);
     }
 
+    @Override
+    public void getFriendPhotos(final String userId, final String albumId,
+            final GetPhotosCallbackHandler handler) {
+        photoProxy.getFriendPhotos(userId, albumId, handler);
+    }
+
+    @Override
+    public void getFriendPhotos(final String userId, final String albumId,
+            final String accessKey, final GetPhotosCallbackHandler handler) {
+        photoProxy.getFriendPhotos(userId, albumId, accessKey, handler);
+    }
+
+    @Override
+    public void getFriendPhoto(final String userId, final String albumId,
+            final String mediaItemId, final GetPhotosCallbackHandler handler) {
+        photoProxy.getFriendPhoto(userId, albumId, mediaItemId, handler);
+    }
+
+    @Override
+    public void getFriendPhoto(final String userId, final String albumId,
+            final String mediaItemId, final String accessKey,
+            final GetPhotosCallbackHandler handler) {
+        photoProxy.getFriendPhoto(userId, albumId, mediaItemId,
+                accessKey, handler);
+    }
+
 }
