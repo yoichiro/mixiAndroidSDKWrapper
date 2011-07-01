@@ -120,4 +120,10 @@ public interface PhotoAPI {
     void getFriendPhoto(String userId, String albumId, String mediaItemId,
             String accessKey, GetPhotosCallbackHandler handler);
 
+    /**
+     * 認可ユーザの友人が最近アップロードしたフォトの一覧を取得します.
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendsPhotos(GetPhotosCallbackHandler handler);
+
 }
