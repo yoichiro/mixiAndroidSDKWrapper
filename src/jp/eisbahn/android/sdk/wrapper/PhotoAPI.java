@@ -1,6 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper;
 
 import jp.eisbahn.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.photo.GetCommentsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetPhotosCallbackHandler;
 
 /**
@@ -125,5 +126,62 @@ public interface PhotoAPI {
      * @param handler 処理結果を受け取るためのコールバックリスナ
      */
     void getFriendsPhotos(GetPhotosCallbackHandler handler);
+
+    /**
+     * 認可ユーザのアルバムのコメント一覧を取得します.
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getMyAlbumComments(String albumId, GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のアルバムのコメント一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendAlbumComments(String userId, String albumId,
+            GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のアルバムのコメント一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param accessKey 合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendAlbumComments(String userId, String albumId,
+            String accessKey, GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザのフォトのコメント一覧を取得します.
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getMyPhotoComments(String albumId, String mediaItemId,
+            GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトのコメント一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendPhotoComments(String userId, String albumId,
+            String mediaItemId, GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトのコメント一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param accessKey 合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendPhotoComments(String userId, String albumId,
+            String mediaItemId, String accessKey,
+            GetCommentsCallbackHandler handler);
 
 }

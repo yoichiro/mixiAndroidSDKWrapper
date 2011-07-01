@@ -29,22 +29,22 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
     }
 
     @Override
-    public void getMyAlbum(final String albumId,
+    public void getMyAlbum(final  String albumId,
             final GetAlbumsCallbackHandler handler) {
         getContainer().send("/photo/albums/@me/@self/" + albumId, handler);
     }
 
     @Override
-    public void getFriendAlbums(final String userId,
+    public void getFriendAlbums(final  String userId,
             final GetAlbumsCallbackHandler handler) {
         getContainer().send("/photo/albums/" + userId + "/@self", handler);
     }
 
     @Override
-    public void getFriendAlbums(final String userId, final String accessKey,
+    public void getFriendAlbums(final  String userId, final  String accessKey,
             final GetAlbumsCallbackHandler handler) {
         try {
-            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+             String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
             getContainer().send("/photo/albums/" + userId
                     + "/@self?accessKey=" + encodedAccessKey, handler);
         } catch (UnsupportedEncodingException e) {
@@ -54,17 +54,17 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
     }
 
     @Override
-    public void getFriendAlbum(final String userId, final String albumId,
+    public void getFriendAlbum(final  String userId, final  String albumId,
             final GetAlbumsCallbackHandler handler) {
         getContainer().send("/photo/albums/" + userId
                 + "/@self/" + albumId, handler);
     }
 
     @Override
-    public void getFriendAlbum(final String userId, final String albumId,
-            final String accessKey, final GetAlbumsCallbackHandler handler) {
+    public void getFriendAlbum(final  String userId, final  String albumId,
+            final  String accessKey, final GetAlbumsCallbackHandler handler) {
         try {
-            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+             String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
             getContainer().send("/photo/albums/" + userId
                     + "/@self/" + albumId + "?accessKey="
                     + encodedAccessKey, handler);
@@ -80,30 +80,30 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
     }
 
     @Override
-    public void getMyPhotos(final String albumId,
+    public void getMyPhotos(final  String albumId,
             final GetPhotosCallbackHandler handler) {
         getContainer().send("/photo/mediaItems/@me/@self/" + albumId, handler);
     }
 
     @Override
-    public void getMyPhoto(final String albumId, final String mediaItemId,
+    public void getMyPhoto(final  String albumId, final  String mediaItemId,
             final GetPhotosCallbackHandler handler) {
         getContainer().send("/photo/mediaItems/@me/@self/" + albumId
                 + "/" + mediaItemId, handler);
     }
 
     @Override
-    public void getFriendPhotos(final String userId, final String albumId,
+    public void getFriendPhotos(final  String userId, final  String albumId,
             final GetPhotosCallbackHandler handler) {
         getContainer().send("/photo/mediaItems/" + userId
                 + "/@self/" + albumId, handler);
     }
 
     @Override
-    public void getFriendPhotos(final String userId, final String albumId,
-            final String accessKey, final GetPhotosCallbackHandler handler) {
+    public void getFriendPhotos(final  String userId, final  String albumId,
+            final  String accessKey, final GetPhotosCallbackHandler handler) {
         try {
-            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+             String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
             getContainer().send("/photo/mediaItems/" + userId
                     + "/@self/" + albumId + "?accessKey="
                     + encodedAccessKey, handler);
@@ -114,18 +114,18 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
     }
 
     @Override
-    public void getFriendPhoto(final String userId, final String albumId,
-            final String mediaItemId, final GetPhotosCallbackHandler handler) {
+    public void getFriendPhoto(final  String userId, final  String albumId,
+            final  String mediaItemId, final GetPhotosCallbackHandler handler) {
         getContainer().send("/photo/mediaItems/" + userId
                 + "/@self/" + albumId + "/" + mediaItemId, handler);
     }
 
     @Override
-    public void getFriendPhoto(final String userId, final String albumId,
-            final String mediaItemId, final String accessKey,
+    public void getFriendPhoto(final  String userId, final  String albumId,
+            final  String mediaItemId, final  String accessKey,
             final GetPhotosCallbackHandler handler) {
         try {
-            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+             String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
             getContainer().send("/photo/mediaItems/" + userId
                     + "/@self/" + albumId + "/" + mediaItemId + "?accessKey="
                     + encodedAccessKey, handler);
@@ -138,6 +138,67 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
     @Override
     public void getFriendsPhotos(final GetPhotosCallbackHandler handler) {
         getContainer().send("/photo/mediaItems/@me/@friends", handler);
+    }
+
+    @Override
+    public void getMyAlbumComments(final  String albumId,
+            final GetCommentsCallbackHandler handler) {
+        getContainer().send("/photo/comments/albums/@me/@self/" + albumId,
+                handler);
+    }
+
+    @Override
+    public void getFriendAlbumComments(final  String userId,
+            final String albumId, final GetCommentsCallbackHandler handler) {
+        getContainer().send("/photo/comments/albums/" + userId
+                + "/@self/" + albumId, handler);
+    }
+
+    @Override
+    public void getFriendAlbumComments(final String userId,
+            final String albumId, final String accessKey,
+            final GetCommentsCallbackHandler handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+           getContainer().send("/photo/comments/albums/" + userId
+                   + "/@self/" + albumId + "?accessKey="
+                   + encodedAccessKey, handler);
+       } catch (UnsupportedEncodingException e) {
+           Log.e("PhotoContainerImpl", e.getMessage(), e);
+           throw new IllegalStateException(e);
+       }
+    }
+
+    @Override
+    public void getMyPhotoComments(final String albumId,
+            final String mediaItemId,
+            final GetCommentsCallbackHandler handler) {
+        getContainer().send("/photo/comments/albums/@me/@self/" + albumId
+                + "/" + mediaItemId, handler);
+    }
+
+    @Override
+    public void getFriendPhotoComments(final String userId,
+            final String albumId, final String mediaItemId,
+            final GetCommentsCallbackHandler handler) {
+        getContainer().send("/photo/comments/albums/" + userId
+                + "/@self/" + albumId + "/" + mediaItemId, handler);
+    }
+
+    @Override
+    public void getFriendPhotoComments(final String userId,
+            final String albumId, final String mediaItemId,
+            final String accessKey,
+            final GetCommentsCallbackHandler handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            getContainer().send("/photo/comments/albums/" + userId
+                   + "/@self/" + albumId + "/" + mediaItemId + "?accessKey="
+                   + encodedAccessKey, handler);
+       } catch (UnsupportedEncodingException e) {
+           Log.e("PhotoContainerImpl", e.getMessage(), e);
+           throw new IllegalStateException(e);
+       }
     }
 
 }
