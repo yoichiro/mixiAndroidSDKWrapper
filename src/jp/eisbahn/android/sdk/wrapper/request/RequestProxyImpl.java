@@ -5,6 +5,7 @@ import java.util.Map;
 
 import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.RequestAPI;
 import jp.mixi.android.sdk.HttpMethod;
 import jp.mixi.android.sdk.MixiContainer;
 import android.content.Context;
@@ -14,7 +15,7 @@ import android.content.Context;
  * @author Yoichiro Tanaka
  *
  */
-public class RequestProxyImpl extends AbstractProxyImpl {
+public class RequestProxyImpl extends AbstractProxyImpl implements RequestAPI {
 
     /**
      * 指定されたパラメータでこのインスタンスを初期化します.

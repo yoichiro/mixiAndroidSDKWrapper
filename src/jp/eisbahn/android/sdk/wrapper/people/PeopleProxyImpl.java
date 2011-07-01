@@ -1,6 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper.people;
 
 import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.PeopleAPI;
 import jp.mixi.android.sdk.MixiContainer;
 
 /**
@@ -8,7 +9,7 @@ import jp.mixi.android.sdk.MixiContainer;
  * @author Yoichiro Tanaka
  *
  */
-public class PeopleProxyImpl extends AbstractProxyImpl {
+public class PeopleProxyImpl extends AbstractProxyImpl implements PeopleAPI {
 
     /**
      * 指定されたパラメータでこのインスタンスを初期化します.

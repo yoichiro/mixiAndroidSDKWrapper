@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.PhotoAPI;
 import jp.mixi.android.sdk.MixiContainer;
 import android.util.Log;
 
@@ -12,7 +13,7 @@ import android.util.Log;
  * @author Yoichiro Tanaka
  *
  */
-public class PhotoProxyImpl extends AbstractProxyImpl {
+public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
 
     /**
      * このインスタンスを初期化します.
