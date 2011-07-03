@@ -3,6 +3,7 @@ package jp.eisbahn.android.sdk.wrapper;
 import jp.eisbahn.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetCommentsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetPhotosCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.photo.GetUsersCallbackHandler;
 
 /**
  * Photo APIに関する処理を規定したインタフェースです.
@@ -183,5 +184,36 @@ public interface PhotoAPI {
     void getFriendPhotoComments(String userId, String albumId,
             String mediaItemId, String accessKey,
             GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザのフォトのいいね！一覧を取得します.
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getMyPhotoFavorites(String albumId, String mediaItemId,
+            GetUsersCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトのいいね！一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendPhotoFavorites(String userId, String albumId,
+            String mediaItemId, GetUsersCallbackHandler handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトのいいね！一覧を取得します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param accessKey 合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void getFriendPhotoFavorites(String userId, String albumId,
+            String mediaItemId, String accessKey,
+            GetUsersCallbackHandler handler);
 
 }

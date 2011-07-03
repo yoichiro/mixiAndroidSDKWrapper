@@ -201,4 +201,34 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
        }
     }
 
+    @Override
+    public void getMyPhotoFavorites(final String albumId,
+            final String mediaItemId, final  GetUsersCallbackHandler handler) {
+        getContainer().send("/photo/favorites/mediaItems/@me/@self/" + albumId
+                + "/" + mediaItemId, handler);
+    }
+
+    @Override
+    public void getFriendPhotoFavorites(final String userId,
+            final String albumId, final String mediaItemId,
+            final  GetUsersCallbackHandler handler) {
+        getContainer().send("/photo/favorites/mediaItems/" + userId
+                + "/@self/" + albumId + "/" + mediaItemId, handler);
+    }
+
+    @Override
+    public void getFriendPhotoFavorites(final String userId,
+            final String albumId, final String mediaItemId,
+            final String accessKey, final GetUsersCallbackHandler handler) {
+       try {
+           String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+           getContainer().send("/photo/favorites/mediaItems/" + userId
+                   + "/@self/" + albumId + "/" + mediaItemId + "?accessKey="
+                   + encodedAccessKey, handler);
+       } catch (UnsupportedEncodingException e) {
+           Log.e("PhotoContainerImpl", e.getMessage(), e);
+           throw new IllegalStateException(e);
+       }
+    }
+
 }
