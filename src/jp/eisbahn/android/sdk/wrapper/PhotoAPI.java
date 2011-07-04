@@ -2,6 +2,7 @@ package jp.eisbahn.android.sdk.wrapper;
 
 import jp.eisbahn.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetCommentsCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.photo.GetIdCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetPhotosCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetUsersCallbackHandler;
 
@@ -215,5 +216,33 @@ public interface PhotoAPI {
     void getFriendPhotoFavorites(String userId, String albumId,
             String mediaItemId, String accessKey,
             GetUsersCallbackHandler handler);
+
+    /**
+     * 新規にアルバムを作成します.
+     * @param title アルバムのタイトル
+     * @param description アルバムの説明文
+     * @param visibility 公開範囲
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void createAlbum(String title, String description, Visibility visibility,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 新規にアルバムを作成します.
+     * @param title アルバムのタイトル
+     * @param description アルバムの説明文
+     * @param visibility 公開範囲
+     * @param accessKey 合い言葉
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void createAlbum(String title, String description, Visibility visibility,
+            String accessKey, GetIdCallbackHandler handler);
+
+    /**
+     * 指定されたアルバムを削除します.
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void deleteAlbum(String albumId, CallbackAdapter handler);
 
 }

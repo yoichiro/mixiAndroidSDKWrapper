@@ -2,9 +2,14 @@ package jp.eisbahn.android.sdk.wrapper.photo;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.PhotoAPI;
+import jp.eisbahn.android.sdk.wrapper.Visibility;
+import jp.mixi.android.sdk.HttpMethod;
 import jp.mixi.android.sdk.MixiContainer;
 import android.util.Log;
 
@@ -229,6 +234,34 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
            Log.e("PhotoContainerImpl", e.getMessage(), e);
            throw new IllegalStateException(e);
        }
+    }
+
+    @Override
+    public void createAlbum(final String title, final String description,
+            final Visibility visibility, final GetIdCallbackHandler handler) {
+        createAlbum(title, description, visibility, null, handler);
+    }
+
+    @Override
+    public void createAlbum(final String title, final String description,
+            final Visibility visibility, final String accessKey,
+            final GetIdCallbackHandler handler) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("title", title);
+        params.put("description", description);
+        params.put("visibility", visibility.toString());
+        if (visibility.equals(Visibility.access_key)) {
+            params.put("accessKey", accessKey);
+        }
+        getContainer().send("/photo/albums/@me/@self", HttpMethod.POST,
+                params, handler);
+    }
+
+    @Override
+    public void deleteAlbum(final String albumId,
+            final CallbackAdapter handler) {
+        getContainer().send("/photo/albums/@me/@self/" + albumId,
+                HttpMethod.DELETE, handler);
     }
 
 }
