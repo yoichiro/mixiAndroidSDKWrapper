@@ -245,4 +245,34 @@ public interface PhotoAPI {
      */
     void deleteAlbum(String albumId, CallbackAdapter handler);
 
+    /**
+     * 認可ユーザの指定されたアルバムにコメントを投稿します.
+     * @param albumId アルバムID
+     * @param text コメント本文
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void postMyAlbumComment(String albumId, String text,
+            CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人の指定されたアルバムにコメントを投稿します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param text コメント本文
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void postFriendAlbumComment(String userId, String albumId,
+            String text, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人の指定されたアルバムにコメントを投稿します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param accessKey アクセスキー
+     * @param text コメント本文
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void postFriendAlbumComment(String userId, String albumId,
+            String accessKey, String text,
+            CallbackAdapter handler);
 }

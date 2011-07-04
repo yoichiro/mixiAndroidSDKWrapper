@@ -264,4 +264,40 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
                 HttpMethod.DELETE, handler);
     }
 
+    @Override
+    public void postMyAlbumComment(final String albumId, final String text,
+            final CallbackAdapter handler) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("text", text);
+        getContainer().send("/photo/comments/albums/@me/@self/" + albumId,
+                HttpMethod.POST, params, handler);
+    }
+
+    @Override
+    public void postFriendAlbumComment(final String userId,
+            final String albumId, final String text,
+            final CallbackAdapter handler) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("text", text);
+        getContainer().send("/photo/comments/albums/" + userId + "/@self/"
+                + albumId, HttpMethod.POST, params, handler);
+    }
+
+    @Override
+    public void postFriendAlbumComment(final String userId,
+            final String albumId, final String accessKey, final String text,
+            final CallbackAdapter handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("text", text);
+            getContainer().send("/photo/comments/albums/" + userId
+                    + "/@self/" + albumId + "?accessKey="
+                    + encodedAccessKey, HttpMethod.POST, params, handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
 }
