@@ -300,4 +300,34 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
         }
     }
 
+    @Override
+    public void deleteMyAlbumComment(final String albumId,
+            final String commentId, final CallbackAdapter handler) {
+        getContainer().send("/photo/comments/albums/@me/@self/" + albumId
+                + "/" + commentId, HttpMethod.DELETE, handler);
+    }
+
+    @Override
+    public void deleteFriendAlbumComment(final String userId,
+            final String albumId, final String commentId,
+            final CallbackAdapter handler) {
+        getContainer().send("/photo/comments/albums/" + userId + "/@self/"
+                + albumId + "/" + commentId, HttpMethod.DELETE, handler);
+    }
+
+    @Override
+    public void deleteFriendAlbumComment(final String userId,
+            final String albumId, final String accessKey,
+            final String commentId, final CallbackAdapter handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            getContainer().send("/photo/comments/albums/" + userId
+                    + "/@self/" + albumId + "/" + commentId + "?accessKey="
+                    + encodedAccessKey, HttpMethod.DELETE, handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
 }
