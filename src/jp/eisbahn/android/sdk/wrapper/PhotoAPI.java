@@ -1,5 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper;
 
+import java.io.InputStream;
+
 import jp.eisbahn.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetCommentsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetIdCallbackHandler;
@@ -305,4 +307,28 @@ public interface PhotoAPI {
      */
     void deleteFriendAlbumComment(String userId, String albumId,
             String accessKey, String commentId, CallbackAdapter handler);
+
+    /**
+     * 新規にフォトをアップロードします.
+     * 対応フォーマットはJPEGのみとなります.
+     * @param in フォトのバイナリ情報のストリーム
+     * @param length フォトのバイナリの長さ
+     * @param albumId アルバムID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void uploadPhoto(InputStream in, int length, String albumId,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 新規にフォトをアップロードします.
+     * 対応フォーマットはJPEGのみとなります.
+     * @param in フォトのバイナリ情報のストリーム
+     * @param length フォトのバイナリの長さ
+     * @param albumId アルバムID
+     * @param title フォトにつけるタイトル文字列
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void uploadPhoto(InputStream in, int length, String albumId,
+            String title, GetIdCallbackHandler handler);
+
 }

@@ -1,5 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper.photo;
 
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -324,6 +325,28 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
             getContainer().send("/photo/comments/albums/" + userId
                     + "/@self/" + albumId + "/" + commentId + "?accessKey="
                     + encodedAccessKey, HttpMethod.DELETE, handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void uploadPhoto(final InputStream in, final int length,
+            final String albumId, final GetIdCallbackHandler handler) {
+        getContainer().send("/photo/mediaItems/@me/@self/" + albumId,
+                "image/jpeg", in, length, handler);
+    }
+
+    @Override
+    public void uploadPhoto(final InputStream in, final int length,
+            final String albumId, final String title,
+            final GetIdCallbackHandler handler) {
+        try {
+            String encodedTitle = URLEncoder.encode(title, "UTF-8");
+            getContainer().send("/photo/mediaItems/@me/@self/"
+                    + albumId + "?title=" + encodedTitle, "image/jpeg",
+                    in, length, handler);
         } catch (UnsupportedEncodingException e) {
             Log.e("PhotoContainerImpl", e.getMessage(), e);
             throw new IllegalStateException(e);
