@@ -331,4 +331,80 @@ public interface PhotoAPI {
     void uploadPhoto(InputStream in, int length, String albumId,
             String title, GetIdCallbackHandler handler);
 
+    /**
+     * 認可ユーザのフォトを削除します.
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void deletePhoto(String albumId, String mediaItemId,
+            CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの指定されたフォトにコメントを投稿します.
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param text コメント本文
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void postMyPhotoComment(String albumId, String mediaItemId, String text,
+            CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人の指定されたフォトにコメントを投稿します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param text コメント本文
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void postFriendPhotoComment(String userId, String albumId,
+            String mediaItemId, String text, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人の指定されたフォトにコメントを投稿します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param accessKey アクセスキー
+     * @param text コメント本文
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void postFriendPhotoComment(String userId, String albumId,
+            String mediaItemId, String accessKey, String text,
+            CallbackAdapter handler);
+
+    /**
+     * 認可ユーザのフォトのコメントを削除します.
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param commentId コメントID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void deleteMyPhotoComment(String albumId, String mediaItemId,
+            String commentId, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトのコメントを削除します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param commentId コメントID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void deleteFriendPhotoComment(String userId, String albumId,
+            String mediaItemId, String commentId, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトのコメントを削除します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param accessKey 合い言葉
+     * @param commentId コメントID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void deleteFriendPhotoComment(String userId, String albumId,
+            String mediaItemId, String accessKey, String commentId,
+            CallbackAdapter handler);
 }

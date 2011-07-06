@@ -353,4 +353,86 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
         }
     }
 
+    @Override
+    public void deletePhoto(final String albumId, final String mediaItemId,
+            final CallbackAdapter handler) {
+        getContainer().send("/photo/mediaItems/@me/@self/" + albumId
+                + "/" + mediaItemId, HttpMethod.DELETE, handler);
+    }
+
+    @Override
+    public void postMyPhotoComment(final String albumId,
+            final String mediaItemId, final String text,
+            final CallbackAdapter handler) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("text", text);
+        getContainer().send("/photo/comments/mediaItems/@me/@self/" + albumId
+                + "/" + mediaItemId,
+                HttpMethod.POST, params, handler);
+    }
+
+    @Override
+    public void postFriendPhotoComment(final String userId,
+            final String albumId, final String mediaItemId, final String text,
+            final CallbackAdapter handler) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("text", text);
+        getContainer().send("/photo/comments/mediaItems/" + userId + "/@self/"
+                + albumId + "/" + mediaItemId, HttpMethod.POST, params,
+                handler);
+    }
+
+    @Override
+    public void postFriendPhotoComment(final String userId,
+            final String albumId, final String mediaItemId,
+            final String accessKey, final String text,
+            final CallbackAdapter handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("text", text);
+            getContainer().send("/photo/comments/mediaItems/" + userId
+                    + "/@self/" + albumId + "/" + mediaItemId + "?accessKey="
+                    + encodedAccessKey, HttpMethod.POST, params, handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void deleteMyPhotoComment(final String albumId,
+            final String mediaItemId, final String commentId,
+            final CallbackAdapter handler) {
+        getContainer().send("/photo/comments/mediaItems/@me/@self/" + albumId
+                + "/" + mediaItemId + "/" + commentId, HttpMethod.DELETE,
+                handler);
+    }
+
+    @Override
+    public void deleteFriendPhotoComment(final String userId,
+            final String albumId, final String mediaItemId,
+            final String commentId, final CallbackAdapter handler) {
+        getContainer().send("/photo/comments/mediaItems/" + userId + "/@self/"
+                + albumId + "/" + mediaItemId + "/" + commentId,
+                HttpMethod.DELETE, handler);
+    }
+
+    @Override
+    public void deleteFriendPhotoComment(final String userId,
+            final String albumId, final String mediaItemId,
+            final String accessKey, final String commentId,
+            final CallbackAdapter handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            getContainer().send("/photo/comments/mediaItems/" + userId
+                    + "/@self/" + albumId + "/" + mediaItemId + "/" + commentId
+                    + "?accessKey=" + encodedAccessKey, HttpMethod.DELETE,
+                    handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
 }
