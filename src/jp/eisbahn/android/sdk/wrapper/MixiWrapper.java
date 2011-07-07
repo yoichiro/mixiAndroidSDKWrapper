@@ -1,5 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper;
 
+import jp.mixi.android.sdk.MixiContainer;
+
 
 /**
  * mixi API SDK for Androidをより手軽に利用するための処理が
@@ -26,5 +28,11 @@ public interface MixiWrapper {
      * @return Photo APIに関する処理を持つオブジェクト
      */
     PhotoAPI getPhotoAPI();
+
+    /**
+     * {@see MixiContainer}オブジェクトを返します.
+     * @return {@see MixiContainer}オブジェクト
+     */
+    MixiContainer getContainer();
 
 }

@@ -21,12 +21,16 @@ public class MixiWrapperImpl implements MixiWrapper {
     /** Photo API コンテナ. */
     private PhotoProxyImpl photoProxy;
 
+    /** {@see MixiContainer}オブジェクト. */
+    private MixiContainer container;
+
     /**
      * 指定されたパラメータでこのインスタンスを初期化します.
      * @param newContainer MixiContainerオブジェクト
      */
     public MixiWrapperImpl(final MixiContainer newContainer) {
         super();
+        container = newContainer;
         peopleProxy = new PeopleProxyImpl(newContainer);
         requestProxy = new RequestProxyImpl(newContainer);
         photoProxy = new PhotoProxyImpl(newContainer);
@@ -45,6 +49,11 @@ public class MixiWrapperImpl implements MixiWrapper {
     @Override
     public PhotoAPI getPhotoAPI() {
         return photoProxy;
+    }
+
+    @Override
+    public MixiContainer getContainer() {
+        return container;
     }
 
 }
