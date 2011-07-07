@@ -435,4 +435,62 @@ public class PhotoProxyImpl extends AbstractProxyImpl implements PhotoAPI {
         }
     }
 
+    @Override
+    public void postFriendPhotoFavorite(final String userId,
+            final String albumId, final String mediaItemId,
+            final CallbackAdapter handler) {
+        getContainer().send("/photo/favorites/mediaItems/" + userId + "/@self/"
+                + albumId + "/" + mediaItemId, HttpMethod.POST, handler);
+    }
+
+    @Override
+    public void postFriendPhotoFavorite(final String userId,
+            final String albumId, final String mediaItemId,
+            final String accessKey, final CallbackAdapter handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            getContainer().send("/photo/favorites/mediaItems/" + userId
+                    + "/@self/" + albumId + "/" + mediaItemId + "?accessKey="
+                    + encodedAccessKey, HttpMethod.POST, handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void deleteMyPhotoFavorite(final String albumId,
+            final String mediaItemId, final String favoriteUserId,
+            final CallbackAdapter handler) {
+        getContainer().send("/photo/favorites/mediaItems/@me/@self/" + albumId
+                + "/" + mediaItemId + "/" + favoriteUserId, HttpMethod.DELETE,
+                handler);
+    }
+
+    @Override
+    public void deleteFriendPhotoFavorite(final String userId,
+            final String albumId, final String mediaItemId,
+            final String favoriteUserId, final CallbackAdapter handler) {
+        getContainer().send("/photo/favorites/mediaItems/" + userId + "/@self/"
+                + albumId + "/" + mediaItemId + "/" + favoriteUserId,
+                HttpMethod.DELETE, handler);
+    }
+
+    @Override
+    public void deleteFriendPhotoFavorite(final String userId,
+            final String albumId, final String mediaItemId,
+            final String accessKey, final String favoriteUserId,
+            final CallbackAdapter handler) {
+        try {
+            String encodedAccessKey = URLEncoder.encode(accessKey, "UTF-8");
+            getContainer().send("/photo/favorites/mediaItems/" + userId
+                    + "/@self/" + albumId + "/" + mediaItemId + "/"
+                    + favoriteUserId + "?accessKey=" + encodedAccessKey,
+                    HttpMethod.DELETE, handler);
+        } catch (UnsupportedEncodingException e) {
+            Log.e("PhotoContainerImpl", e.getMessage(), e);
+            throw new IllegalStateException(e);
+        }
+    }
+
 }

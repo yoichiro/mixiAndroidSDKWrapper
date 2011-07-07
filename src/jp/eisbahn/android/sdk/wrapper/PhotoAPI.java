@@ -407,4 +407,60 @@ public interface PhotoAPI {
     void deleteFriendPhotoComment(String userId, String albumId,
             String mediaItemId, String accessKey, String commentId,
             CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人の指定されたフォトにいいね！を投稿します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void postFriendPhotoFavorite(String userId, String albumId,
+            String mediaItemId, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人の指定されたフォトにいいね！を投稿します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param accessKey アクセスキー
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void postFriendPhotoFavorite(String userId, String albumId,
+            String mediaItemId, String accessKey, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザのフォトのいいね！を削除します.
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param favoriteUserId 消したいいいね！のユーザID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void deleteMyPhotoFavorite(String albumId, String mediaItemId,
+            String favoriteUserId, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトのいいね！を削除します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param favoriteUserId 消したいいいね！のユーザID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void deleteFriendPhotoFavorite(String userId, String albumId,
+            String mediaItemId, String favoriteUserId, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの特定の友人のフォトのいいね！を削除します.
+     * @param userId 友人のユーザID
+     * @param albumId アルバムID
+     * @param mediaItemId フォトID
+     * @param accessKey 合い言葉
+     * @param favoriteUserId 消したいいいね！のユーザID
+     * @param handler 処理結果を受け取るためのコールバックリスナ
+     */
+    void deleteFriendPhotoFavorite(String userId, String albumId,
+            String mediaItemId, String accessKey, String favoriteUserId,
+            CallbackAdapter handler);
+
 }
