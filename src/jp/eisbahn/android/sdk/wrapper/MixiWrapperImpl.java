@@ -3,6 +3,7 @@ package jp.eisbahn.android.sdk.wrapper;
 import jp.eisbahn.android.sdk.wrapper.people.PeopleProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.photo.PhotoProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.request.RequestProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.groups.GroupsProxyImpl;
 import jp.mixi.android.sdk.MixiContainer;
 
 /**
@@ -21,6 +22,9 @@ public class MixiWrapperImpl implements MixiWrapper {
     /** Photo API コンテナ. */
     private PhotoProxyImpl photoProxy;
 
+    /** Groups API コンテナ. */
+    private GroupsProxyImpl groupsProxy;
+
     /** {@see MixiContainer}オブジェクト. */
     private MixiContainer container;
 
@@ -34,6 +38,7 @@ public class MixiWrapperImpl implements MixiWrapper {
         peopleProxy = new PeopleProxyImpl(newContainer);
         requestProxy = new RequestProxyImpl(newContainer);
         photoProxy = new PhotoProxyImpl(newContainer);
+        groupsProxy = new GroupsProxyImpl(newContainer);
     }
 
     @Override
@@ -49,6 +54,11 @@ public class MixiWrapperImpl implements MixiWrapper {
     @Override
     public PhotoAPI getPhotoAPI() {
         return photoProxy;
+    }
+
+    @Override
+    public GroupsAPI getGroupsAPI() {
+        return groupsProxy;
     }
 
     @Override

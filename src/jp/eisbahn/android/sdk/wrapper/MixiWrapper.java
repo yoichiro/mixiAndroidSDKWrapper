@@ -30,6 +30,12 @@ public interface MixiWrapper {
     PhotoAPI getPhotoAPI();
 
     /**
+     * Groups APIに関する処理を持つオブジェクトを返します.
+     * @return Groups APIに関する処理を持つオブジェクト
+     */
+    GroupsAPI getGroupsAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */
