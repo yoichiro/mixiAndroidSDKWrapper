@@ -24,4 +24,11 @@ public class GroupsProxyImpl extends AbstractProxyImpl implements GroupsAPI {
         getContainer().send("/groups/@me", handler);
     }
 
+    @Override
+    public void getMyGroups(final GetGroupsParams params,
+            final GetGroupsCallbackHandler handler) {
+        getContainer().send("/groups/@me", params.convertParameterMap(),
+                handler);
+    }
+
 }
