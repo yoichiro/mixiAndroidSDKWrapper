@@ -144,3 +144,14 @@ handleResult()メソッドが呼び出されます。通常はこのメソッド
 API呼び出しが何らかの理由で失敗した場合は、onError()あるいはonFatal()メソッドが呼び出されます。
 この2つのメソッドでは、エラーの内容をAlertDialogにて表示する実装が記述されています。もし他の処理を
 行いたい場合は、これらのメソッドをオーバーライドして独自の処理を記述してください。
+
+## 開発者の方々へ
+
+mixiAndroidSDKWrapperの品質を低コストで継続的に高く保つために、テストプロジェクトが準備されて
+います。
+
+[mixiAndroidSDKWrapperTest](https://github.com/yoichiro/mixiAndroidSDKWrapperTest)
+
+mixiAndroidSDKWrapper内のコードに何らかの修正が加えられた際には、原則として上記のテスト
+プロジェクトに対してその修正を確認するためのコードを追記しなければなりません。これにより、常にテスト
+可能な状態とし、将来的なリファクタリングの実施可能性を確保します。
