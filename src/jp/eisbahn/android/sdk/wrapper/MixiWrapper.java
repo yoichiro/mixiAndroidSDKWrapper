@@ -36,6 +36,12 @@ public interface MixiWrapper {
     GroupsAPI getGroupsAPI();
 
     /**
+     * Search APIに関する処理を持つオブジェクトを返します.
+     * @return Search APIに関する処理を持つオブジェクト
+     */
+    SearchAPI getSearchAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */
