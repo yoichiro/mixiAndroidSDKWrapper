@@ -1,5 +1,12 @@
 # 変更履歴
 
+## Version 1.1
+
+ * 概要： Groups API, People lookup APIのサポート。
+ * リリース日： 2011/08/02
+ * 変更内容：
+  * mixi Graph API（Groups API, People lookup API）のサポートの追加。
+
 ## Version 1.0
 
  * 概要： 最初のリリース。
