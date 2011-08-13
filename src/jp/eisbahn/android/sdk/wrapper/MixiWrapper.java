@@ -42,6 +42,12 @@ public interface MixiWrapper {
     SearchAPI getSearchAPI();
 
     /**
+     * Check APIに関する処理を持つオブジェクトを返します.
+     * @return Check APIに関する処理を持つオブジェクト
+     */
+    CheckAPI getCheckAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */
