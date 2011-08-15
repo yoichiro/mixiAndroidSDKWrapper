@@ -1,5 +1,13 @@
 # 変更履歴
 
+## Version 1.2
+
+ * 概要： Check APIのサポート。
+ * リリース日： 2011/08/15
+ * 変更内容：
+  * mixi Graph API（Check API）のサポートの追加。
+  * README.md内の記述ミスを修正。
+
 ## Version 1.1
 
  * 概要： Groups API, People lookup APIのサポート。
