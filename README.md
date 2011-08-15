@@ -84,9 +84,9 @@ MixiWrapperオブジェクトを生成するために、以下のコードを実
 
     String clientId = ...; // Client ID
     // mixiアプリとして利用する場合
-    MixiWrapper mixiWrapper = MixiWrapperFactory.createForMixiApp(clientId);
+    MixiWrapper mixiWrapper = new MixiWrapperFactory().createForMixiApp(clientId);
     // mixi Graph APIを利用する場合
-    MixiWrapper mixiWrapper = MixiWrapperFactory.createForGraphAPI(clientId);
+    MixiWrapper mixiWrapper = new MixiWrapperFactory().createForGraphAPI(clientId);
 
 ### 初期化と認可処理
 
@@ -113,8 +113,9 @@ mixi API SDK for Android(TM)におけるAPI呼び出しは、基本的に全てs
 
 たとえば、ある友人が持つフォトアルバムの一覧は、以下のコードで取得可能です。
 
+    Context context = ...; // ActivityなどのContextオブジェクト
     String userId = ...; // 友人のユーザID
-    photoAPI.getFriendAlbums(userId, new GetAlbumsCallbackHandler() {
+    photoAPI.getFriendAlbums(userId, new GetAlbumsCallbackHandler(context) {
         protected void handleResult(boolean canceled) {
             for (Album album : getAlbums()) {
                 // do something...
