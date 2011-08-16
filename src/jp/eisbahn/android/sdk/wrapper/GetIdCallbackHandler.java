@@ -1,6 +1,5 @@
-package jp.eisbahn.android.sdk.wrapper.photo;
+package jp.eisbahn.android.sdk.wrapper;
 
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -48,6 +48,12 @@ public interface MixiWrapper {
     CheckAPI getCheckAPI();
 
     /**
+     * Diary APIに関する処理を持つオブジェクトを返します.
+     * @return Diary APIに関する処理を持つオブジェクト
+     */
+    DiaryAPI getDiaryAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */

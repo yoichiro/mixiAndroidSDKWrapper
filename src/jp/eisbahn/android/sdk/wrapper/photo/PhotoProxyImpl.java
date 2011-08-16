@@ -8,6 +8,7 @@ import java.util.Map;
 
 import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.GetIdCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.PhotoAPI;
 import jp.eisbahn.android.sdk.wrapper.Visibility;
 import jp.mixi.android.sdk.HttpMethod;

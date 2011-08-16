@@ -5,6 +5,7 @@ import jp.eisbahn.android.sdk.wrapper.photo.PhotoProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.request.RequestProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.search.SearchProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.check.CheckProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.diary.DiaryProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.groups.GroupsProxyImpl;
 import jp.mixi.android.sdk.MixiContainer;
 
@@ -33,6 +34,9 @@ public class MixiWrapperImpl implements MixiWrapper {
     /** Check API コンテナ. */
     private CheckProxyImpl checkProxy;
 
+    /** Diary API コンテナ. */
+    private DiaryProxyImpl diaryProxy;
+
     /** {@see MixiContainer}オブジェクト. */
     private MixiContainer container;
 
@@ -49,6 +53,7 @@ public class MixiWrapperImpl implements MixiWrapper {
         groupsProxy = new GroupsProxyImpl(newContainer);
         searchProxy = new SearchProxyImpl(newContainer);
         checkProxy = new CheckProxyImpl(newContainer);
+        diaryProxy = new DiaryProxyImpl(newContainer);
     }
 
     @Override
@@ -79,6 +84,11 @@ public class MixiWrapperImpl implements MixiWrapper {
     @Override
     public CheckAPI getCheckAPI() {
         return checkProxy;
+    }
+
+    @Override
+    public DiaryAPI getDiaryAPI() {
+        return diaryProxy;
     }
 
     @Override

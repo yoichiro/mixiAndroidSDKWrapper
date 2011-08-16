@@ -4,7 +4,6 @@ import java.io.InputStream;
 
 import jp.eisbahn.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetCommentsCallbackHandler;
-import jp.eisbahn.android.sdk.wrapper.photo.GetIdCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetPhotosCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetUsersCallbackHandler;
 
