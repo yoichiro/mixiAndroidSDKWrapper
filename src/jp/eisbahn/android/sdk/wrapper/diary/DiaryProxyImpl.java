@@ -27,88 +27,56 @@ public class DiaryProxyImpl extends AbstractProxyImpl implements DiaryAPI {
     @Override
     public void postPublicDiary(final String title, final String body,
             final GetIdCallbackHandler handler) {
-        try {
-            JSONObject params = new JSONObject();
-            params.put("title", title);
-            params.put("body", body);
-            JSONObject privacy = new JSONObject();
-            privacy.put("visibility", "everyone");
-            privacy.put("show_users", "1");
-            params.put("privacy", privacy);
-            getContainer().send("/diary/articles/@me/@self", params, handler);
-        } catch (JSONException e) {
-            throw new IllegalStateException(e);
-        }
+        postInternal(title, body, Visibility.everyone, null, true, handler);
     }
 
     @Override
     public void postDiary(final String title, final String body,
             final Visibility visibility, final GetIdCallbackHandler handler) {
-        try {
-            JSONObject params = new JSONObject();
-            params.put("title", title);
-            params.put("body", body);
-            JSONObject privacy = new JSONObject();
-            privacy.put("visibility", visibility.toString());
-            privacy.put("show_users", "0");
-            params.put("privacy", privacy);
-            getContainer().send("/diary/articles/@me/@self", params, handler);
-        } catch (JSONException e) {
-            throw new IllegalStateException(e);
-        }
+        postInternal(title, body, visibility, null, false, handler);
     }
 
     @Override
     public void postDiary(final String title, final String body,
             final String group, final GetIdCallbackHandler handler) {
-        try {
-            JSONObject params = new JSONObject();
-            params.put("title", title);
-            params.put("body", body);
-            JSONObject privacy = new JSONObject();
-            privacy.put("visibility", Visibility.group.toString());
-            privacy.put("group", group);
-            privacy.put("show_users", "0");
-            params.put("privacy", privacy);
-            getContainer().send("/diary/articles/@me/@self", params, handler);
-        } catch (JSONException e) {
-            throw new IllegalStateException(e);
-        }
+        postInternal(title, body, Visibility.group, group, false, handler);
     }
 
     @Override
     public void postDiary(final String title, final String body,
             final Visibility visibility, final boolean showUsers,
             final GetIdCallbackHandler handler) {
-        try {
-            JSONObject params = new JSONObject();
-            params.put("title", title);
-            params.put("body", body);
-            JSONObject privacy = new JSONObject();
-            privacy.put("visibility", visibility.toString());
-            if (showUsers) {
-                privacy.put("show_users", "1");
-            } else {
-                privacy.put("show_users", "0");
-            }
-            params.put("privacy", privacy);
-            getContainer().send("/diary/articles/@me/@self", params, handler);
-        } catch (JSONException e) {
-            throw new IllegalStateException(e);
-        }
+        postInternal(title, body, visibility, null, showUsers, handler);
     }
 
     @Override
     public void postDiary(final String title, final String body,
             final String group, final boolean showUsers,
             final GetIdCallbackHandler handler) {
+        postInternal(title, body, Visibility.group, group, showUsers, handler);
+    }
+
+    /**
+     * 日記の投稿を実際に行う内部メソッドです.
+     * @param title 日記のタイトル
+     * @param body 日記の本文
+     * @param visibility 公開範囲
+     * @param group 特定のグループに公開する際のグループID
+     * @param showUsers 「自分だけに表示」の場合はfalse,「自分と公開中の友人に表示」の場合はtrue
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    private void postInternal(final String title, final String body,
+            final Visibility visibility, final String group,
+            final boolean showUsers, final GetIdCallbackHandler handler) {
         try {
             JSONObject params = new JSONObject();
             params.put("title", title);
             params.put("body", body);
             JSONObject privacy = new JSONObject();
-            privacy.put("visibility", Visibility.group.toString());
-            privacy.put("group", group);
+            privacy.put("visibility", visibility.toString());
+            if (group != null) {
+                privacy.put("group", group);
+            }
             if (showUsers) {
                 privacy.put("show_users", "1");
             } else {
