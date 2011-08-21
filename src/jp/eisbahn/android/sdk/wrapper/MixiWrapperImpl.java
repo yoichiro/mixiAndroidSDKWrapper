@@ -1,5 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper;
 
+import jp.eisbahn.android.sdk.wrapper.message.MessageProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.people.PeopleProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.photo.PhotoProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.request.RequestProxyImpl;
@@ -37,6 +38,9 @@ public class MixiWrapperImpl implements MixiWrapper {
     /** Diary API コンテナ. */
     private DiaryProxyImpl diaryProxy;
 
+    /** Message API コンテナ. */
+    private MessageProxyImpl messageProxy;
+
     /** {@see MixiContainer}オブジェクト. */
     private MixiContainer container;
 
@@ -54,6 +58,7 @@ public class MixiWrapperImpl implements MixiWrapper {
         searchProxy = new SearchProxyImpl(newContainer);
         checkProxy = new CheckProxyImpl(newContainer);
         diaryProxy = new DiaryProxyImpl(newContainer);
+        messageProxy = new MessageProxyImpl(newContainer);
     }
 
     @Override
@@ -89,6 +94,11 @@ public class MixiWrapperImpl implements MixiWrapper {
     @Override
     public DiaryAPI getDiaryAPI() {
         return diaryProxy;
+    }
+
+    @Override
+    public MessageAPI getMessageAPI() {
+        return messageProxy;
     }
 
     @Override

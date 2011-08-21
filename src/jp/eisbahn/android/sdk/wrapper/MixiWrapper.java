@@ -54,6 +54,12 @@ public interface MixiWrapper {
     DiaryAPI getDiaryAPI();
 
     /**
+     * Message APIに関する処理を持つオブジェクトを返します.
+     * @return Message APIに関する処理を持つオブジェクト
+     */
+    MessageAPI getMessageAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */

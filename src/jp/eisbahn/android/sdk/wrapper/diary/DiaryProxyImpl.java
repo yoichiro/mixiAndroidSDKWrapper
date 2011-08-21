@@ -17,7 +17,7 @@ import jp.eisbahn.android.sdk.wrapper.Visibility;
 import jp.mixi.android.sdk.MixiContainer;
 
 /**
- * People APIを扱うコンテナクラスです.
+ * Diary APIを扱うコンテナクラスです.
  * @author Yoichiro Tanaka
  *
  */
