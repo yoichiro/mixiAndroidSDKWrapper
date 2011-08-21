@@ -1,5 +1,12 @@
 # 変更履歴
 
+## Version 1.3
+
+ * 概要： Diary API, Message APIのサポート。
+ * リリース日： 2011/08/22
+ * 変更内容：
+  * mixi Graph API（Diary API, Message API）のサポートの追加。
+
 ## Version 1.2
 
  * 概要： Check APIのサポート。
