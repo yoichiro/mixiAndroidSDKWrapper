@@ -60,6 +60,12 @@ public interface MixiWrapper {
     MessageAPI getMessageAPI();
 
     /**
+     * Voice APIに関する処理を持つオブジェクトを返します.
+     * @return Voice APIに関する処理を持つオブジェクト
+     */
+    VoiceAPI getVoiceAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */
