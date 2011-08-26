@@ -1,7 +1,16 @@
 package jp.eisbahn.android.sdk.wrapper.voice;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+
 import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.VoiceAPI;
+import jp.mixi.android.sdk.HttpMethod;
 import jp.mixi.android.sdk.MixiContainer;
 
 /**
@@ -111,6 +120,78 @@ public class VoiceProxyImpl extends AbstractProxyImpl implements VoiceAPI {
             final GetUsersCallbackHandler handler) {
         getContainer().send("/voice/favorites/" + postId,
                 params.convertParameterMap(), handler);
+    }
+
+    @Override
+    public void postStatus(final String status,
+            final GetStatusesCallbackHandler handler) {
+        try {
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("status", URLEncoder.encode(status, "UTF-8"));
+            getContainer().send("/voice/statuses", HttpMethod.POST, params,
+                    handler);
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void postStatus(final String status, final InputStream image,
+            final GetStatusesCallbackHandler handler) {
+        try {
+            getContainer().send(
+                    "/voice/statuses?status="
+                            + URLEncoder.encode(status, "UTF-8"),
+                    "image/jpeg",
+                    image,
+                    image.available(),
+                    handler);
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalStateException(e);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void deleteStatus(final String postId,
+            final CallbackAdapter handler) {
+        getContainer().send("/voice/statuses/" + postId, HttpMethod.DELETE,
+                handler);
+    }
+
+    @Override
+    public void postStatusComment(final String postId, final String text,
+            final CallbackAdapter handler) {
+        try {
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("text", URLEncoder.encode(text, "UTF-8"));
+            getContainer().send("/voice/replies/" + postId, HttpMethod.POST,
+                    params, handler);
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void deleteStatusComment(final String postId, final String commentId,
+            final CallbackAdapter handler) {
+        getContainer().send("/voice/replies/" + postId + "/" + commentId,
+                HttpMethod.DELETE, handler);
+    }
+
+    @Override
+    public void postStatusFavorite(final String postId,
+            final CallbackAdapter handler) {
+        getContainer().send("/voice/favorites/" + postId, HttpMethod.POST,
+                handler);
+    }
+
+    @Override
+    public void deleteStatusFavorite(final String postId, final String userId,
+            final CallbackAdapter handler) {
+        getContainer().send("/voice/favorites/" + postId + "/" + userId,
+                HttpMethod.DELETE, handler);
     }
 
 }
