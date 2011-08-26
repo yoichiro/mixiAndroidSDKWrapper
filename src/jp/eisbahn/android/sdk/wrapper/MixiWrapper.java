@@ -66,6 +66,12 @@ public interface MixiWrapper {
     VoiceAPI getVoiceAPI();
 
     /**
+     * Updates APIに関する処理を持つオブジェクトを返します.
+     * @return Updates APIに関する処理を持つオブジェクト
+     */
+    UpdatesAPI getUpdatesAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */
