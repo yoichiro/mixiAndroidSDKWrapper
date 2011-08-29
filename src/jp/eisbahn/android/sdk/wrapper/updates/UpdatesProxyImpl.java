@@ -19,4 +19,20 @@ public class UpdatesProxyImpl extends AbstractProxyImpl implements UpdatesAPI {
         super(newContainer);
     }
 
+    @Override
+    public void getMyFeeds(final GetFeedCallbackHandler handler) {
+        getFriendFeeds("@me", handler);
+    }
+
+    @Override
+    public void getFriendFeeds(final String userId,
+            final GetFeedCallbackHandler handler) {
+        getContainer().send("/updates/" + userId + "/@self", handler);
+    }
+
+    @Override
+    public void getFriendsFeeds(final GetFeedCallbackHandler handler) {
+        getContainer().send("/updates/@me/@friends", handler);
+    }
+
 }
