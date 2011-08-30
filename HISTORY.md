@@ -1,5 +1,12 @@
 # 変更履歴
 
+## Version 1.4
+
+ * 概要： Voice API, Updates APIのサポート。
+ * リリース日： 2011/08/30
+ * 変更内容：
+  * mixi Graph API（Voice API, Updates API）のサポートの追加。
+
 ## Version 1.3
 
  * 概要： Diary API, Message APIのサポート。

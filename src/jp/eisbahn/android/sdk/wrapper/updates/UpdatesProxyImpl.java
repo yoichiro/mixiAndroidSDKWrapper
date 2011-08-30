@@ -32,7 +32,41 @@ public class UpdatesProxyImpl extends AbstractProxyImpl implements UpdatesAPI {
 
     @Override
     public void getFriendsFeeds(final GetFeedCallbackHandler handler) {
-        getContainer().send("/updates/@me/@friends", handler);
+        getGroupFeeds("@friends", handler);
+    }
+
+    @Override
+    public void getGroupFeeds(final String groupId,
+            final GetFeedCallbackHandler handler) {
+        getContainer().send("/updates/@me/" + groupId, handler);
+    }
+
+    @Override
+    public void getMyFeeds(final GetFeedParams params,
+            final GetFeedCallbackHandler handler) {
+        getFriendFeeds("@me", params, handler);
+    }
+
+    @Override
+    public void getFriendFeeds(final String userId,
+            final GetFeedParams params,
+            final GetFeedCallbackHandler handler) {
+        getContainer().send("/updates/" + userId + "/@self",
+                params.convertParameterMap(), handler);
+    }
+
+    @Override
+    public void getFriendsFeeds(final GetFeedParams params,
+            final GetFeedCallbackHandler handler) {
+        getGroupFeeds("@friends", params, handler);
+    }
+
+    @Override
+    public void getGroupFeeds(final String groupId,
+            final GetFeedParams params,
+            final GetFeedCallbackHandler handler) {
+        getContainer().send("/updates/@me/" + groupId,
+                params.convertParameterMap(), handler);
     }
 
 }
