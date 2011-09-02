@@ -1,6 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper.people;
 
-import jp.eisbahn.android.sdk.wrapper.Model;
+import jp.eisbahn.android.sdk.wrapper.User;
 
 import org.json.JSONObject;
 
@@ -9,7 +9,7 @@ import org.json.JSONObject;
  * @author Yoichiro Tanaka
  *
  */
-public class Person extends Model {
+public class Person extends User {
 
     /**
      * 指定された情報でこのインスタンスを初期化します.
@@ -17,38 +17,6 @@ public class Person extends Model {
      */
     public Person(final JSONObject original) {
         super(original);
-    }
-
-    /**
-     * IDを返します.
-     * @return ID
-     */
-    public String getId() {
-        return getPropertyString("id");
-    }
-
-    /**
-     * ニックネームを返します.
-     * @return ニックネーム
-     */
-    public String getDisplayName() {
-        return getPropertyString("displayName");
-    }
-
-    /**
-     * プロフィール画像のURLを返します.
-     * @return プロフィール画像のURL
-     */
-    public String getThumbnailUrl() {
-        return getPropertyString("thumbnailUrl");
-    }
-
-    /**
-     * プロフィールページのURLを返します.
-     * @return プロフィールページのURL
-     */
-    public String getProfileUrl() {
-        return getPropertyString("profileUrl");
     }
 
 }
