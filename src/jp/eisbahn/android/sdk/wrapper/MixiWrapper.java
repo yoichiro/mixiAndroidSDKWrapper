@@ -72,6 +72,12 @@ public interface MixiWrapper {
     UpdatesAPI getUpdatesAPI();
 
     /**
+     * Profile Image APIに関する処理を持つオブジェクトを返します.
+     * @return Profile Image APIに関する処理を持つオブジェクト
+     */
+    ProfileImageAPI getProfileImageAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */
