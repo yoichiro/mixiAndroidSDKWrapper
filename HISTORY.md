@@ -1,5 +1,12 @@
 # 変更履歴
 
+## Version 1.5
+
+ * 概要： Profile Image APIのサポート。
+ * リリース日： 2011/09/15
+ * 変更内容：
+  * mixi Graph API（Profile Image API）のサポートの追加。
+
 ## Version 1.4
 
  * 概要： Voice API, Updates APIのサポート。
