@@ -15,6 +15,9 @@ public class GetPeopleParams extends AbstractParams {
     /** 開始インデックス. */
     private int startIndex = -1;
 
+    /** 取得件数. */
+    private int count = -1;
+
     /** 並び替え条件. */
     private SortBy sortBy = null;
 
@@ -33,6 +36,14 @@ public class GetPeopleParams extends AbstractParams {
      */
     public void setStartIndex(final int startIndex) {
         this.startIndex = startIndex;
+    }
+
+    /**
+     * 取得件数をセットします.
+     * @param count 取得件数
+     */
+    public void setCount(final int count) {
+        this.count = count;
     }
 
     /**
@@ -76,6 +87,9 @@ public class GetPeopleParams extends AbstractParams {
         Map<String, String> params = new HashMap<String, String>();
         if (startIndex >= 0) {
             params.put("startIndex", String.valueOf(startIndex));
+        }
+        if (count >= 0) {
+            params.put("count", String.valueOf(count));
         }
         if (sortBy != null) {
             params.put("sortBy", sortBy.toString());
