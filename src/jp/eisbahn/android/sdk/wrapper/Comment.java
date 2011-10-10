@@ -1,10 +1,8 @@
-package jp.eisbahn.android.sdk.wrapper.photo;
+package jp.eisbahn.android.sdk.wrapper;
 
 import java.text.ParseException;
 import java.util.Date;
 
-import jp.eisbahn.android.sdk.wrapper.Model;
-import jp.eisbahn.android.sdk.wrapper.User;
 import jp.eisbahn.android.sdk.wrapper.util.DateUtils;
 
 import org.json.JSONObject;
@@ -22,7 +20,7 @@ public class Comment extends Model {
      * このインスタンスを初期化します.
      * @param newOriginal JSONオブジェクト
      */
-    protected Comment(final JSONObject newOriginal) {
+    public Comment(final JSONObject newOriginal) {
         super(newOriginal);
         user = new User(getPropertyJSONObject("user"));
     }
@@ -36,11 +34,20 @@ public class Comment extends Model {
     }
 
     /**
-     * createAt属性値を返します.
+     * createdAt属性値を返します.
      * @return コメント投稿日時
      * @throws ParseException パースに失敗したとき
      */
     public final Date getCreatedAt() throws ParseException {
+        return getCreated();
+    }
+
+    /**
+     * created属性値を返します.
+     * @return コメント投稿日時
+     * @throws ParseException パースに失敗したとき
+     */
+    public final Date getCreated() throws ParseException {
         String createdAt = getPropertyString("created");
         if (createdAt != null) {
             return DateUtils.convertDate(createdAt);

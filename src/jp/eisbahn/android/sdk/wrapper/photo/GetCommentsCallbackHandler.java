@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.Comment;
 
 import org.json.JSONArray;
 import org.json.JSONException;

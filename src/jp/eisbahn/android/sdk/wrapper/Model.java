@@ -58,6 +58,27 @@ public abstract class Model {
     }
 
     /**
+     * 属性値をdouble値として返します.
+     * @param propertyName 属性名
+     * @return 属性値
+     */
+    protected final double getPropertyDouble(final String propertyName) {
+        Object value;
+        try {
+            value = original.get(propertyName);
+        } catch (JSONException e) {
+            value = null;
+        }
+        if (value == null) {
+            return 0;
+        } else if (value instanceof Double) {
+            return (Double) value;
+        } else {
+            return Double.parseDouble((String) value);
+        }
+    }
+
+    /**
      * 属性値をboolean値として返します.
      * @param propertyName 属性名
      * @return 属性値
