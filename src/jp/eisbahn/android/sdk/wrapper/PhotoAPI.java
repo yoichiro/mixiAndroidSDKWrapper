@@ -3,9 +3,7 @@ package jp.eisbahn.android.sdk.wrapper;
 import java.io.InputStream;
 
 import jp.eisbahn.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
-import jp.eisbahn.android.sdk.wrapper.photo.GetCommentsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetPhotosCallbackHandler;
-import jp.eisbahn.android.sdk.wrapper.photo.GetUsersCallbackHandler;
 
 /**
  * Photo APIに関する処理を規定したインタフェースです.

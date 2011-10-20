@@ -1,4 +1,4 @@
-package jp.eisbahn.android.sdk.wrapper.photo;
+package jp.eisbahn.android.sdk.wrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,6 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
-import jp.eisbahn.android.sdk.wrapper.User;
 
 /**
  * ユーザ情報の取得結果を受け取り提供するためのコールバックハンドラクラスです.

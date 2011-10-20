@@ -1,4 +1,4 @@
-package jp.eisbahn.android.sdk.wrapper.people;
+package jp.eisbahn.android.sdk.wrapper;
 
 /**
  * 取得したいプロフィール情報の項目を指定します.
