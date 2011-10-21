@@ -78,6 +78,12 @@ public interface MixiWrapper {
     ProfileImageAPI getProfileImageAPI();
 
     /**
+     * Checkin APIに関する処理を持つオブジェクトを返します.
+     * @return Checkin APIに関する処理を持つオブジェクト
+     */
+    CheckinAPI getCheckinAPI();
+
+    /**
      * {@see MixiContainer}オブジェクトを返します.
      * @return {@see MixiContainer}オブジェクト
      */

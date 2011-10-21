@@ -9,6 +9,7 @@ import jp.eisbahn.android.sdk.wrapper.search.SearchProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.updates.UpdatesProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.voice.VoiceProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.check.CheckProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.checkin.CheckinProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.diary.DiaryProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.groups.GroupsProxyImpl;
 import jp.mixi.android.sdk.MixiContainer;
@@ -53,6 +54,9 @@ public class MixiWrapperImpl implements MixiWrapper {
     /** Profile Image API コンテナ. */
     private ProfileImageProxyImpl profileImageProxy;
 
+    /** Check-in API コンテナ. */
+    private CheckinProxyImpl checkinProxy;
+
     /** {@see MixiContainer}オブジェクト. */
     private MixiContainer container;
 
@@ -74,6 +78,7 @@ public class MixiWrapperImpl implements MixiWrapper {
         voiceProxy = new VoiceProxyImpl(newContainer);
         updatesProxy = new UpdatesProxyImpl(newContainer);
         profileImageProxy = new ProfileImageProxyImpl(newContainer);
+        checkinProxy = new CheckinProxyImpl(newContainer);
     }
 
     @Override
@@ -129,6 +134,11 @@ public class MixiWrapperImpl implements MixiWrapper {
     @Override
     public ProfileImageAPI getProfileImageAPI() {
         return profileImageProxy;
+    }
+
+    @Override
+    public CheckinAPI getCheckinAPI() {
+        return checkinProxy;
     }
 
     @Override

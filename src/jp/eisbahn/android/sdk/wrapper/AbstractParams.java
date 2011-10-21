@@ -2,6 +2,8 @@ package jp.eisbahn.android.sdk.wrapper;
 
 import java.util.Map;
 
+import jp.eisbahn.android.sdk.wrapper.util.StringUtils;
+
 /**
  * このクラスは、要求を具体的に指定するためのパラメータを持つクラスにとって
  * 便利な処理を提供する抽象クラスです.
@@ -36,20 +38,7 @@ public abstract class AbstractParams {
      */
     protected final String convertArrayToStringWithComma(
             final Object[] array) {
-        if (array == null) {
-            return null;
-        } else {
-            StringBuilder sb = new StringBuilder();
-            boolean first = true;
-            for (int i = 0; i < array.length; i++) {
-                if (!first) {
-                    sb.append(',');
-                }
-                sb.append(array[i].toString());
-                first = false;
-            }
-            return sb.toString();
-        }
+        return StringUtils.convertArrayToStringWithComma(array);
     }
 
 }

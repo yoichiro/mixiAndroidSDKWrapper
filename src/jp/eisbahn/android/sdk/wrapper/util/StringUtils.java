@@ -33,4 +33,27 @@ public final class StringUtils {
         return sb.toString();
     }
 
+    /**
+     * 指定された配列を、カンマ区切りの一つの文字列に変換して返します.
+     * @param array 配列. 各要素はtoString()されます.
+     * @return 変換後のカンマ区切りの文字列
+     */
+    public static String convertArrayToStringWithComma(
+            final Object[] array) {
+        if (array == null) {
+            return null;
+        } else {
+            StringBuilder sb = new StringBuilder();
+            boolean first = true;
+            for (int i = 0; i < array.length; i++) {
+                if (!first) {
+                    sb.append(',');
+                }
+                sb.append(array[i].toString());
+                first = false;
+            }
+            return sb.toString();
+        }
+    }
+
 }
