@@ -107,4 +107,55 @@ public class CheckinProxyImpl extends AbstractProxyImpl implements CheckinAPI {
                 handler);
     }
 
+    @Override
+    public void getMyCheckins(final GetCheckinsCallbackHandler handler) {
+        getContainer().send("/checkins/@me/@self", handler);
+    }
+
+    @Override
+    public void getMyCheckins(final GetCheckinsParams params,
+            final GetCheckinsCallbackHandler handler) {
+        getContainer().send("/checkins/@me/@self",
+                params.convertParameterMap(), handler);
+    }
+
+    @Override
+    public void getFriendCheckins(final String userId,
+            final GetCheckinsCallbackHandler handler) {
+        getContainer().send("/checkins/" + userId + "/@self", handler);
+    }
+
+    @Override
+    public void getFriendCheckins(final String userId,
+            final GetCheckinsParams params,
+            final GetCheckinsCallbackHandler handler) {
+        getContainer().send("/checkins/" + userId + "/@self",
+                params.convertParameterMap(), handler);
+    }
+
+    @Override
+    public void getGroupCheckins(final String groupId,
+            final GetCheckinsCallbackHandler handler) {
+        getContainer().send("/checkins/@me/" + groupId, handler);
+    }
+
+    @Override
+    public void getGroupCheckins(final String groupId,
+            final GetCheckinsParams params,
+            final GetCheckinsCallbackHandler handler) {
+        getContainer().send("/checkins/@me/" + groupId,
+                params.convertParameterMap(), handler);
+    }
+
+    @Override
+    public void getFriendsCheckins(final GetCheckinsCallbackHandler handler) {
+        getGroupCheckins("@friends", handler);
+    }
+
+    @Override
+    public void getFriendsCheckins(final GetCheckinsParams params,
+            final GetCheckinsCallbackHandler handler) {
+        getGroupCheckins("@friends", params, handler);
+    }
+
 }
