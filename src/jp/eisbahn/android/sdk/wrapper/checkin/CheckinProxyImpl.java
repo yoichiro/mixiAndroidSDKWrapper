@@ -158,4 +158,34 @@ public class CheckinProxyImpl extends AbstractProxyImpl implements CheckinAPI {
         getGroupCheckins("@friends", params, handler);
     }
 
+    @Override
+    public void getMyCheckin(final String checkinId,
+            final GetCheckinCallbackHandler handler) {
+        getFriendCheckin("@me", checkinId, handler);
+    }
+
+    @Override
+    public void getMyCheckin(final String checkinId,
+            final CheckinField[] fields,
+            final GetCheckinCallbackHandler handler) {
+        getFriendCheckin("@me", checkinId, fields, handler);
+    }
+
+    @Override
+    public void getFriendCheckin(final String userId, final String checkinId,
+            final GetCheckinCallbackHandler handler) {
+        getContainer().send("/checkins/" + userId + "/@self/" + checkinId,
+                handler);
+    }
+
+    @Override
+    public void getFriendCheckin(final String userId, final String checkinId,
+            final CheckinField[] fields,
+            final GetCheckinCallbackHandler handler) {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("fields", StringUtils.convertArrayToStringWithComma(fields));
+        getContainer().send("/checkins/" + userId + "/@self/" + checkinId,
+                params, handler);
+    }
+
 }

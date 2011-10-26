@@ -1,5 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper;
 
+import jp.eisbahn.android.sdk.wrapper.checkin.CheckinField;
+import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinsParams;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotCallbackHandler;
@@ -155,4 +157,40 @@ public interface CheckinAPI {
      */
     void getFriendsCheckins(GetCheckinsParams params,
             GetCheckinsCallbackHandler handler);
+
+    /**
+     * 認可ユーザのチェックインフィード情報を取得します.
+     * @param checkinId チェックインフィードのID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getMyCheckin(String checkinId, GetCheckinCallbackHandler handler);
+
+    /**
+     * 認可ユーザのチェックインフィード情報を取得します.
+     * @param checkinId チェックインフィードのID
+     * @param fields 取得対象の項目
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getMyCheckin(String checkinId, CheckinField[] fields,
+            GetCheckinCallbackHandler handler);
+
+    /**
+     * 認可ユーザのある友人のチェックインフィード情報を取得します.
+     * @param userId 友人のユーザID
+     * @param checkinId チェックインフィードのID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getFriendCheckin(String userId, String checkinId,
+            GetCheckinCallbackHandler handler);
+
+    /**
+     * 認可ユーザのある友人のチェックインフィード情報を取得します.
+     * @param userId 友人のユーザID
+     * @param checkinId チェックインフィードのID
+     * @param fields 取得対象の項目
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getFriendCheckin(String userId, String checkinId,
+            CheckinField[] fields,
+            GetCheckinCallbackHandler handler);
 }
