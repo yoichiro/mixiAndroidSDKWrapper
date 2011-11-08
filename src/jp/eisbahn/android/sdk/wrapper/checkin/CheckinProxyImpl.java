@@ -1,18 +1,26 @@
 package jp.eisbahn.android.sdk.wrapper.checkin;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.CheckinAPI;
+import jp.eisbahn.android.sdk.wrapper.GetCommentsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.GetIdCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.Visibility;
 import jp.eisbahn.android.sdk.wrapper.util.StringUtils;
 import jp.mixi.android.sdk.HttpMethod;
 import jp.mixi.android.sdk.MixiContainer;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.util.Log;
 
 /**
  * Check-in APIを扱うコンテナクラスです.
@@ -20,6 +28,9 @@ import jp.mixi.android.sdk.MixiContainer;
  *
  */
 public class CheckinProxyImpl extends AbstractProxyImpl implements CheckinAPI {
+
+    /** バッファサイズ. */
+    private static final int BUF_SIZE = 1024;
 
     /**
      * 指定されたパラメータでこのインスタンスを初期化します.
@@ -188,4 +199,284 @@ public class CheckinProxyImpl extends AbstractProxyImpl implements CheckinAPI {
                 params, handler);
     }
 
+    @Override
+    public void checkin(final String spotId, final String message,
+            final Visibility visibility,
+            final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, visibility, null, handler);
+    }
+
+    @Override
+    public void checkin(final String spotId, final String message,
+            final String groupId, final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, Visibility.group, groupId, handler);
+    }
+
+    @Override
+    public void checkin(final String spotId, final double latitude,
+            final double longitude, final String message,
+            final Visibility visibility, final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, latitude, longitude,
+                visibility, null, handler);
+    }
+
+    @Override
+    public void checkin(final String spotId, final double latitude,
+            final double longitude, final String message, final String groupId,
+            final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, latitude, longitude,
+                Visibility.group, groupId, handler);
+    }
+
+    @Override
+    public void checkin(final String spotId, final String message,
+            final Visibility visibility, final InputStream image,
+            final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, visibility, null, image, handler);
+    }
+
+    @Override
+    public void checkin(final String spotId, final String message,
+            final String groupId, final InputStream image,
+            final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, Visibility.group, groupId,
+                image, handler);
+    }
+
+    @Override
+    public void checkin(final String spotId, final double latitude,
+            final double longitude, final String message,
+            final Visibility visibility, final InputStream image,
+            final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, latitude, longitude, visibility, null,
+                image, handler);
+    }
+
+    @Override
+    public void checkin(final String spotId, final double latitude,
+            final double longitude, final String message, final String groupId,
+            final InputStream image, final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, latitude, longitude, Visibility.group,
+                groupId, image, handler);
+    }
+
+    /**
+     * チェックインを実際に行う内部メソッドです.
+     * @param spotId スポットID
+     * @param message メッセージ
+     * @param visibility 公開範囲
+     * @param group 特定のグループに公開する際のグループID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    private void postInternal(final String spotId, final String message,
+            final Visibility visibility, final String group,
+            final GetIdCallbackHandler handler) {
+        try {
+            JSONObject params = createRequestJSONObject(message,
+                    visibility, group);
+            getContainer().send("/checkins/" + spotId, params, handler);
+        } catch (JSONException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    /**
+     * チェックインを実際に行う内部メソッドです.
+     * @param spotId スポットID
+     * @param message メッセージ
+     * @param latitude 緯度
+     * @param longitude 経度
+     * @param visibility 公開範囲
+     * @param group 特定のグループに公開する際のグループID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    private void postInternal(final String spotId, final String message,
+            final double latitude, final double longitude,
+            final Visibility visibility, final String group,
+            final GetIdCallbackHandler handler) {
+        try {
+            JSONObject params = createRequestJSONObject(message,
+                    latitude, longitude, visibility, group);
+            getContainer().send("/checkins/" + spotId, params, handler);
+        } catch (JSONException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    /**
+     * チェックインを実際に行う内部メソッドです.
+     * @param spotId スポットID
+     * @param message メッセージ
+     * @param visibility 公開範囲
+     * @param group 特定のグループに公開する際のグループID
+     * @param image 画像の入力ストリーム
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    private void postInternal(final String spotId, final String message,
+            final Visibility visibility, final String group,
+            final InputStream image,
+            final GetIdCallbackHandler handler) {
+        postInternal(spotId, message, -1, -1, visibility, group, image,
+                handler);
+    }
+
+    /**
+     * チェックインを実際に行う内部メソッドです.
+     * @param spotId スポットID
+     * @param message メッセージ
+     * @param latitude 緯度
+     * @param longitude 経度
+     * @param visibility 公開範囲
+     * @param group 特定のグループに公開する際のグループID
+     * @param image 画像の入力ストリーム
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    private void postInternal(final String spotId, final String message,
+            final double latitude, final double longitude,
+            final Visibility visibility, final String group,
+            final InputStream image,
+            final GetIdCallbackHandler handler) {
+        try {
+            JSONObject params;
+            if (latitude >= 0 && longitude >= 0) {
+                params = createRequestJSONObject(message,
+                        latitude, longitude,
+                        visibility, group);
+            } else {
+                params = createRequestJSONObject(message,
+                        visibility, group);
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.append("---mixi_android_sdk_wrapper\r\n");
+            sb.append("Content-Disposition: form-data; name=\"request\"\r\n");
+            sb.append("\r\n");
+            sb.append(params.toString());
+            sb.append("\r\n");
+            sb.append("---mixi_android_sdk_wrapper\r\n");
+            sb.append("Content-Disposition: form-data; name=\"photo1\";"
+                    + " filename=\"photo1.jpg\"\r\n");
+            sb.append("\r\n");
+            byte[] header = sb.toString().getBytes("UTF-8");
+            byte[] request = new byte[header.length + image.available()];
+            System.arraycopy(header, 0, request, 0, header.length);
+
+            int len = 0;
+            int offset = header.length;
+            byte[] buf = new byte[BUF_SIZE];
+            while ((len = image.read(buf)) != -1) {
+                System.arraycopy(buf, 0, request, offset, len);
+                offset += len;
+            }
+            getContainer().send(
+                    "/checkins/" + spotId,
+                    "multipart/form-data; boundary=-mixi_android_sdk_wrapper",
+                    new ByteArrayInputStream(request),
+                    request.length,
+                    handler);
+        } catch (JSONException e) {
+            Log.w("mixiAndroidSDKWrapper", e);
+            throw new IllegalStateException(e);
+        } catch (UnsupportedEncodingException e) {
+            Log.w("mixiAndroidSDKWrapper", e);
+            throw new IllegalStateException(e);
+        } catch (IOException e) {
+            Log.w("mixiAndroidSDKWrapper", e);
+            throw new IllegalStateException(e);
+        } finally {
+            try {
+                image.close();
+            } catch (IOException ex) {
+                Log.w("mixiAndroidSDKWrapper", ex);
+            }
+        }
+    }
+
+    /**
+     * 指定された内容でリクエストのJSONオブジェクトを構築します.
+     * @param message メッセージ
+     * @param visibility 公開範囲
+     * @param group グループID
+     * @return 生成されたJSONオブジェクト
+     * @throws JSONException もし何らかの理由でJSONオブジェクトの生成に失敗したとき
+     */
+    private JSONObject createRequestJSONObject(final String message,
+            final Visibility visibility, final String group)
+            throws JSONException {
+        JSONObject params = new JSONObject();
+        params.put("message", message);
+        JSONObject privacy = new JSONObject();
+        privacy.put("visibility", visibility.toString());
+        if (group != null) {
+            privacy.put("group", group);
+        }
+        params.put("privacy", privacy);
+        return params;
+    }
+
+    /**
+     * 指定された内容でリクエストのJSONオブジェクトを構築します.
+     * @param message メッセージ
+     * @param latitude 緯度
+     * @param longitude 経度
+     * @param visibility 公開範囲
+     * @param group グループID
+     * @return 生成されたJSONオブジェクト
+     * @throws JSONException もし何らかの理由でJSONオブジェクトの生成に失敗したとき
+     */
+    private JSONObject createRequestJSONObject(final String message,
+            final double latitude, final double longitude,
+            final Visibility visibility, final String group)
+            throws JSONException {
+        JSONObject params = new JSONObject();
+        params.put("message", message);
+        JSONObject location = new JSONObject();
+        location.put("latitude", String.valueOf(latitude));
+        location.put("longitude", String.valueOf(longitude));
+        params.put("location", location);
+        JSONObject privacy = new JSONObject();
+        privacy.put("visibility", visibility.toString());
+        if (group != null) {
+            privacy.put("group", group);
+        }
+        params.put("privacy", privacy);
+        return params;
+    }
+
+    @Override
+    public void deleteCheckin(final String checkinId,
+            final CallbackAdapter handler) {
+        getContainer().send("/checkins/@me/@self/" + checkinId,
+                HttpMethod.DELETE, handler);
+    }
+
+    @Override
+    public void getMyCheckinComments(final String checkinId,
+            final GetCommentsCallbackHandler handler) {
+        getFriendCheckinComments("@me", checkinId, handler);
+    }
+
+    @Override
+    public void getMyCheckinComments(final String checkinId,
+            final GetCommentsParams params,
+            final GetCommentsCallbackHandler handler) {
+        getFriendCheckinComments("@me", checkinId, params, handler);
+    }
+
+    @Override
+    public void getFriendCheckinComments(final String userId,
+            final String checkinId, final GetCommentsCallbackHandler handler) {
+        getContainer().send(
+                "/checkins/comments/" + userId + "/@self/" + checkinId,
+                handler);
+    }
+
+    @Override
+    public void getFriendCheckinComments(final String userId,
+            final String checkinId, final GetCommentsParams params,
+            final GetCommentsCallbackHandler handler) {
+        getContainer().send(
+                "/checkins/comments/" + userId + "/@self/" + checkinId,
+                params.convertParameterMap(),
+                handler);
+    }
 }

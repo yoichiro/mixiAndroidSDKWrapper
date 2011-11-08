@@ -1,9 +1,12 @@
 package jp.eisbahn.android.sdk.wrapper;
 
+import java.io.InputStream;
+
 import jp.eisbahn.android.sdk.wrapper.checkin.CheckinField;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinsParams;
+import jp.eisbahn.android.sdk.wrapper.checkin.GetCommentsParams;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotsParams;
@@ -193,4 +196,143 @@ public interface CheckinAPI {
     void getFriendCheckin(String userId, String checkinId,
             CheckinField[] fields,
             GetCheckinCallbackHandler handler);
+
+    /**
+     * 指定されたスポットにチェックインします.
+     * @param spotId スポットID
+     * @param message メッセージ
+     * @param visibility 公開範囲
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void checkin(String spotId, String message, Visibility visibility,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 指定されたスポットにチェックインします.
+     * @param spotId スポットID
+     * @param message メッセージ
+     * @param groupId 公開するグループのID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void checkin(String spotId, String message, String groupId,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 指定されたスポットにチェックインします.
+     * @param spotId スポットID
+     * @param latitude 緯度
+     * @param longitude 経度
+     * @param message メッセージ
+     * @param visibility 公開範囲
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void checkin(String spotId, double latitude, double longitude,
+            String message, Visibility visibility,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 指定されたスポットにチェックインします.
+     * @param spotId スポットID
+     * @param latitude 緯度
+     * @param longitude 経度
+     * @param message メッセージ
+     * @param groupId 公開するグループのID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void checkin(String spotId, double latitude, double longitude,
+            String message, String groupId, GetIdCallbackHandler handler);
+
+    /**
+     * 指定されたスポットにチェックインします.
+     * @param spotId スポットID
+     * @param message メッセージ
+     * @param visibility 公開範囲
+     * @param image 画像の入力ストリーム
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void checkin(String spotId, String message, Visibility visibility,
+            InputStream image, GetIdCallbackHandler handler);
+
+    /**
+     * 指定されたスポットにチェックインします.
+     * @param spotId スポットID
+     * @param message メッセージ
+     * @param groupId 公開するグループID
+     * @param image 画像の入力ストリーム
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void checkin(String spotId, String message, String groupId,
+            InputStream image, GetIdCallbackHandler handler);
+
+    /**
+     * 指定されたスポットにチェックインします.
+     * @param spotId スポットID
+     * @param latitude 緯度
+     * @param longitude 経度
+     * @param message メッセージ
+     * @param visibility 公開範囲
+     * @param image 画像の入力ストリーム
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void checkin(String spotId, double latitude, double longitude,
+            String message, Visibility visibility, InputStream image,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 指定されたスポットにチェックインします.
+     * @param spotId スポットID
+     * @param latitude 緯度
+     * @param longitude 経度
+     * @param message メッセージ
+     * @param groupId 公開するグループのID
+     * @param image 画像の入力ストリーム
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void checkin(String spotId, double latitude, double longitude,
+            String message, String groupId, InputStream image,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 認可ユーザが行ったチェックインを削除します.
+     * @param checkinId チェックインID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void deleteCheckin(String checkinId, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザのチェックインに付けられたコメントを取得します.
+     * @param checkinId チェックインID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getMyCheckinComments(String checkinId,
+            GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザのチェックインに付けられたコメントを取得します.
+     * @param checkinId チェックインID
+     * @param params 取得条件を持つパラメータクラス
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getMyCheckinComments(String checkinId, GetCommentsParams params,
+            GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人のチェックインに付けられたコメントを取得します.
+     * @param userId ユーザID
+     * @param checkinId チェックインID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getFriendCheckinComments(String userId, String checkinId,
+            GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人のチェックインに付けられたコメントを取得します.
+     * @param userId ユーザID
+     * @param checkinId チェックインID
+     * @param params 取得条件を持つパラメータクラス
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getFriendCheckinComments(String userId, String checkinId,
+            GetCommentsParams params, GetCommentsCallbackHandler handler);
+
 }
