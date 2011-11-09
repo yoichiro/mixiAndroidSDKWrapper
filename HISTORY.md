@@ -1,5 +1,12 @@
 # 変更履歴
 
+## Version 1.6
+
+ * 概要： Check-in APIのサポート。
+ * リリース日： 2011/11/10
+ * 変更内容：
+  * mixi Graph API（Check-in API）のサポートの追加。
+
 ## Version 1.5
 
  * 概要： Profile Image APIのサポート。
