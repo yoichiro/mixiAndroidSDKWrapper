@@ -12,6 +12,7 @@ import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.CheckinAPI;
 import jp.eisbahn.android.sdk.wrapper.GetCommentsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.GetIdCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.GetUsersCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.Visibility;
 import jp.eisbahn.android.sdk.wrapper.util.StringUtils;
 import jp.mixi.android.sdk.HttpMethod;
@@ -478,5 +479,98 @@ public class CheckinProxyImpl extends AbstractProxyImpl implements CheckinAPI {
                 "/checkins/comments/" + userId + "/@self/" + checkinId,
                 params.convertParameterMap(),
                 handler);
+    }
+
+    @Override
+    public void postMyCheckinComment(final String checkinId, final String text,
+            final GetIdCallbackHandler handler) {
+        postFriendCheckinComment("@me", checkinId, text, handler);
+    }
+
+    @Override
+    public void postFriendCheckinComment(final String userId,
+            final String checkinId, final String text,
+            final GetIdCallbackHandler handler) {
+        try {
+            JSONObject params = new JSONObject();
+            params.put("text", text);
+            getContainer().send(
+                    "/checkins/comments/" + userId + "/@self/" + checkinId,
+                    params, handler);
+        } catch (JSONException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    @Override
+    public void deleteMyCheckinComment(final String checkinId,
+            final String commentId, final CallbackAdapter handler) {
+        deleteFriendCheckinComment("@me", checkinId, commentId, handler);
+    }
+
+    @Override
+    public void deleteFriendCheckinComment(final String userId,
+            final String checkinId, final String commentId,
+            final CallbackAdapter handler) {
+        getContainer().send(
+                "/checkins/comments/" + userId + "/@self/" + checkinId + "/"
+                + commentId,
+                HttpMethod.DELETE, handler);
+    }
+
+    @Override
+    public void getMyCheckinFavorites(final String checkinId,
+            final GetUsersCallbackHandler handler) {
+        getFriendCheckinFavorites("@me", checkinId, handler);
+    }
+
+    @Override
+    public void getMyCheckinFavorites(final String checkinId,
+            final GetFavoritesParams params,
+            final GetUsersCallbackHandler handler) {
+        getFriendCheckinFavorites("@me", checkinId, params, handler);
+    }
+
+    @Override
+    public void getFriendCheckinFavorites(final String userId,
+            final String checkinId,
+            final GetUsersCallbackHandler handler) {
+        getContainer().send(
+                "/checkins/favorites/" + userId + "/@self/" + checkinId,
+                handler);
+    }
+
+    @Override
+    public void getFriendCheckinFavorites(final String userId,
+            final String checkinId, final GetFavoritesParams params,
+            final GetUsersCallbackHandler handler) {
+        getContainer().send(
+                "/checkins/favorites/" + userId + "/@self/" + checkinId,
+                params.convertParameterMap(),
+                handler);
+    }
+
+    @Override
+    public void postFriendCheckinFavorite(final String userId,
+            final String checkinId, final GetIdCallbackHandler handler) {
+        getContainer().send(
+                "/checkins/favorites/" + userId + "/@self/" + checkinId,
+                HttpMethod.POST,
+                handler);
+    }
+
+    @Override
+    public void deleteMyCheckinFavorite(final String checkinId,
+            final String favoriteUserId, final CallbackAdapter handler) {
+        deleteFriendCheckinFavorite("@me", checkinId, favoriteUserId, handler);
+    }
+
+    @Override
+    public void deleteFriendCheckinFavorite(final String userId,
+            final String checkinId, final String favoriteUserId,
+            final CallbackAdapter handler) {
+        getContainer().send(
+                "/checkins/favorites/" + userId + "/@self/" + checkinId
+                + "/" + favoriteUserId, HttpMethod.DELETE, handler);
     }
 }

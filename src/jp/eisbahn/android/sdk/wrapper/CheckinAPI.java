@@ -7,6 +7,7 @@ import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetCheckinsParams;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetCommentsParams;
+import jp.eisbahn.android.sdk.wrapper.checkin.GetFavoritesParams;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotsParams;
@@ -334,5 +335,107 @@ public interface CheckinAPI {
      */
     void getFriendCheckinComments(String userId, String checkinId,
             GetCommentsParams params, GetCommentsCallbackHandler handler);
+
+    /**
+     * 認可ユーザのチェックインにコメントを投稿します.
+     * @param checkinId チェックインID
+     * @param text コメントの本文
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void postMyCheckinComment(String checkinId, String text,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人のチェックインにコメントを投稿します.
+     * @param userId ユーザID
+     * @param checkinId チェックインID
+     * @param text コメントの本文
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void postFriendCheckinComment(String userId, String checkinId, String text,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 認可ユーザのチェックインに投稿されたコメントを削除します.
+     * @param checkinId チェックインID
+     * @param commentId コメントID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void deleteMyCheckinComment(String checkinId, String commentId,
+            CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの友人のチェックインに投稿されたコメントを削除します.
+     * @param userId ユーザID
+     * @param checkinId チェックインID
+     * @param commentId コメントID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void deleteFriendCheckinComment(String userId, String checkinId,
+            String commentId, CallbackAdapter handler);
+
+    /**
+     * 認可ユーザのチェックインに投稿されたいいね！を取得します.
+     * @param checkinId チェックインID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getMyCheckinFavorites(String checkinId,
+            GetUsersCallbackHandler handler);
+
+    /**
+     * 認可ユーザのチェックインに投稿されたいいね！を取得します.
+     * @param checkinId チェックインID
+     * @param params 取得条件を持つパラメータオブジェクト
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getMyCheckinFavorites(String checkinId, GetFavoritesParams params,
+            GetUsersCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人のチェックインに投稿されたいいね！を取得します.
+     * @param userId ユーザID
+     * @param checkinId チェックインID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getFriendCheckinFavorites(String userId, String checkinId,
+            GetUsersCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人のチェックインに投稿されたいいね！を取得します.
+     * @param userId ユーザID
+     * @param checkinId チェックインID
+     * @param params 取得条件を持つパラメータオブジェクト
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void getFriendCheckinFavorites(String userId, String checkinId,
+            GetFavoritesParams params, GetUsersCallbackHandler handler);
+
+    /**
+     * 認可ユーザの友人のチェックインにいいね！を投稿します.
+     * @param userId ユーザID
+     * @param checkinId チェックインID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void postFriendCheckinFavorite(String userId, String checkinId,
+            GetIdCallbackHandler handler);
+
+    /**
+     * 認可ユーザのチェックインに投稿されたいいね！を削除します.
+     * @param checkinId チェックインID
+     * @param favoriteUserId いいね！をしたユーザID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void deleteMyCheckinFavorite(String checkinId, String favoriteUserId,
+            CallbackAdapter handler);
+
+    /**
+     * 認可ユーザの友人のチェックインに投稿されたいいね！を削除します.
+     * @param userId ユーザID
+     * @param checkinId チェックインID
+     * @param favoriteUserId いいね！をしたユーザID
+     * @param handler 処理結果を扱うためのハンドラオブジェクト
+     */
+    void deleteFriendCheckinFavorite(String userId, String checkinId,
+            String favoriteUserId, CallbackAdapter handler);
 
 }
