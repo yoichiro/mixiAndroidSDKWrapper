@@ -1,7 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper.checkin;
 
-
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;

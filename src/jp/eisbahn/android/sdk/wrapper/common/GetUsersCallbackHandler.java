@@ -1,8 +1,7 @@
-package jp.eisbahn.android.sdk.wrapper;
+package jp.eisbahn.android.sdk.wrapper.common;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,11 +12,11 @@ import android.os.Bundle;
 import android.util.Log;
 
 /**
- * コメント情報の取得結果を受け取り提供するためのコールバックハンドラクラスです.
+ * ユーザ情報の取得結果を受け取り提供するためのコールバックハンドラクラスです.
  * @author Yoichiro Tanaka
  *
  */
-public class GetCommentsCallbackHandler extends CallbackAdapter {
+public class GetUsersCallbackHandler extends CallbackAdapter {
 
     /** 総取得可能件数. */
     private int totalResults;
@@ -28,14 +27,14 @@ public class GetCommentsCallbackHandler extends CallbackAdapter {
     /** 開始インデックス. */
     private int startIndex;
 
-    /** コメント情報のコレクション. */
-    private List<Comment> comments;
+    /** ユーザ情報のコレクション. */
+    private List<User> users;
 
     /**
-     * 指定された情報でこのインスタンスを初期化します.
+     * このインスタンスを初期化します.
      * @param newContext コンテキストオブジェクト
      */
-    public GetCommentsCallbackHandler(final Context newContext) {
+    public GetUsersCallbackHandler(final Context newContext) {
         super(newContext);
     }
 
@@ -50,20 +49,20 @@ public class GetCommentsCallbackHandler extends CallbackAdapter {
             Object entry = root.get("entry");
             if (entry instanceof JSONObject) {
                 JSONObject obj = (JSONObject) entry;
-                comments = new ArrayList<Comment>();
-                comments.add(new Comment(obj));
+                users = new ArrayList<User>();
+                users.add(new User(obj));
             } else {
                 JSONArray array = (JSONArray) entry;
-                comments = new ArrayList<Comment>();
+                users = new ArrayList<User>();
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject obj = array.getJSONObject(i);
-                    comments.add(new Comment(obj));
+                    users.add(new User(obj));
                 }
             }
             super.onComplete(values);
         } catch (JSONException e) {
             Log.e("mixiAndroidSDKWrapper", e.getMessage(), e);
-            alert("Error", "Fetching albums failed. " + e.getMessage());
+            alert("Error", "Fetching photos failed. " + e.getMessage());
         }
     }
 
@@ -92,11 +91,11 @@ public class GetCommentsCallbackHandler extends CallbackAdapter {
     }
 
     /**
-     * コメント情報のコレクションを返します.
-     * @return コメント情報のコレクション
+     * ユーザ情報のコレクションを返します.
+     * @return ユーザ情報のコレクション
      */
-    public List<Comment> getComments() {
-        return comments;
+    public List<User> getUsers() {
+        return users;
     }
 
 }

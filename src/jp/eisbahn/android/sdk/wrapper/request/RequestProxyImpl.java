@@ -3,9 +3,9 @@ package jp.eisbahn.android.sdk.wrapper.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.RequestAPI;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
 import jp.mixi.android.sdk.HttpMethod;
 import jp.mixi.android.sdk.MixiContainer;
 import android.content.Context;

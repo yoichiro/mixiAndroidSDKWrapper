@@ -3,10 +3,10 @@ package jp.eisbahn.android.sdk.wrapper.checkin;
 import java.text.ParseException;
 import java.util.Date;
 
-import jp.eisbahn.android.sdk.wrapper.Comment;
-import jp.eisbahn.android.sdk.wrapper.Model;
-import jp.eisbahn.android.sdk.wrapper.Photo;
-import jp.eisbahn.android.sdk.wrapper.User;
+import jp.eisbahn.android.sdk.wrapper.common.Comment;
+import jp.eisbahn.android.sdk.wrapper.common.Model;
+import jp.eisbahn.android.sdk.wrapper.common.Photo;
+import jp.eisbahn.android.sdk.wrapper.common.User;
 import jp.eisbahn.android.sdk.wrapper.util.DateUtils;
 
 import org.json.JSONArray;

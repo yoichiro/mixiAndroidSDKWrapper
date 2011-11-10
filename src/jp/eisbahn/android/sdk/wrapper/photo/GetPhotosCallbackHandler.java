@@ -3,8 +3,8 @@ package jp.eisbahn.android.sdk.wrapper.photo;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
-import jp.eisbahn.android.sdk.wrapper.Photo;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.common.Photo;
 
 import org.json.JSONArray;
 import org.json.JSONException;

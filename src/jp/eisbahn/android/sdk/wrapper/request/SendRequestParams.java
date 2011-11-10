@@ -3,7 +3,7 @@ package jp.eisbahn.android.sdk.wrapper.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractParams;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractParams;
 
 /**
  * mixiアプリ向けAPIであるリクエスト送信を行うために必要となる

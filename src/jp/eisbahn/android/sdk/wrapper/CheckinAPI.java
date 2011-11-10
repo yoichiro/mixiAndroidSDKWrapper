@@ -13,6 +13,11 @@ import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.checkin.GetSpotsParams;
 import jp.eisbahn.android.sdk.wrapper.checkin.SearchSpotsParams;
 import jp.eisbahn.android.sdk.wrapper.checkin.SpotField;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.common.GetCommentsCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.common.GetIdCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.common.GetUsersCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.common.Visibility;
 
 
 /**

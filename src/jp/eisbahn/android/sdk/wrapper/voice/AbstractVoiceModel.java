@@ -8,7 +8,7 @@ import java.util.Locale;
 
 import org.json.JSONObject;
 
-import jp.eisbahn.android.sdk.wrapper.Model;
+import jp.eisbahn.android.sdk.wrapper.common.Model;
 
 /**
  * このクラスはVoice APIにて扱われる情報の共通的な処理を持つ抽象クラスです.

@@ -1,5 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper;
 
+import jp.eisbahn.android.sdk.wrapper.common.MixiWrapperImpl;
 import jp.mixi.android.sdk.Config;
 import jp.mixi.android.sdk.MixiContainer;
 import jp.mixi.android.sdk.MixiContainerFactory;

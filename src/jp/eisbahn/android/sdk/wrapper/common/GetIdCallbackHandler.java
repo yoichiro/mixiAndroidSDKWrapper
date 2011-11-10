@@ -1,5 +1,4 @@
-package jp.eisbahn.android.sdk.wrapper;
-
+package jp.eisbahn.android.sdk.wrapper.common;
 
 import org.json.JSONException;
 import org.json.JSONObject;

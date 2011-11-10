@@ -3,8 +3,8 @@ package jp.eisbahn.android.sdk.wrapper.search;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.SearchAPI;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.people.GetPeopleCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.util.StringUtils;
 import jp.mixi.android.sdk.MixiContainer;

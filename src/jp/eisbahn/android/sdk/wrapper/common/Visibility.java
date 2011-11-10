@@ -1,4 +1,4 @@
-package jp.eisbahn.android.sdk.wrapper;
+package jp.eisbahn.android.sdk.wrapper.common;
 
 /**
  * 公開範囲を指定します.

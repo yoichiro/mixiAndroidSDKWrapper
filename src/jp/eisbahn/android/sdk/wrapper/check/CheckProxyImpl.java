@@ -1,8 +1,8 @@
 package jp.eisbahn.android.sdk.wrapper.check;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.CheckAPI;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
 import jp.mixi.android.sdk.MixiContainer;
 
 import org.json.JSONException;

@@ -3,8 +3,8 @@ package jp.eisbahn.android.sdk.wrapper.checkin;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractParams;
-import jp.eisbahn.android.sdk.wrapper.Field;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractParams;
+import jp.eisbahn.android.sdk.wrapper.common.Field;
 
 /**
  * いいね情報を取得する際に指定する条件を持つクラスです.

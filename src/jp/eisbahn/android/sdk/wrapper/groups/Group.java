@@ -1,6 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper.groups;
 
-import jp.eisbahn.android.sdk.wrapper.Model;
+import jp.eisbahn.android.sdk.wrapper.common.Model;
 
 import org.json.JSONObject;
 

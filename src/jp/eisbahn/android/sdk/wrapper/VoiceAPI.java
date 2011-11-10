@@ -2,6 +2,7 @@ package jp.eisbahn.android.sdk.wrapper;
 
 import java.io.InputStream;
 
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.voice.GetCommentsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.voice.GetFeedbacksParams;
 import jp.eisbahn.android.sdk.wrapper.voice.GetStatusParams;

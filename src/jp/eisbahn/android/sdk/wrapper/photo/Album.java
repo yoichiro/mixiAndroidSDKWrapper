@@ -1,6 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper.photo;
 
-import jp.eisbahn.android.sdk.wrapper.Privacy;
+import jp.eisbahn.android.sdk.wrapper.common.Privacy;
 
 import org.json.JSONObject;
 

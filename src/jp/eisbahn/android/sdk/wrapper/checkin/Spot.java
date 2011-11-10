@@ -1,7 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper.checkin;
 
-import jp.eisbahn.android.sdk.wrapper.Model;
-import jp.eisbahn.android.sdk.wrapper.User;
+import jp.eisbahn.android.sdk.wrapper.common.Model;
+import jp.eisbahn.android.sdk.wrapper.common.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;

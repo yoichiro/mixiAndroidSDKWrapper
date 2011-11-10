@@ -2,6 +2,11 @@ package jp.eisbahn.android.sdk.wrapper;
 
 import java.io.InputStream;
 
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.common.GetCommentsCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.common.GetIdCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.common.GetUsersCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.common.Visibility;
 import jp.eisbahn.android.sdk.wrapper.photo.GetAlbumsCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.photo.GetPhotosCallbackHandler;
 

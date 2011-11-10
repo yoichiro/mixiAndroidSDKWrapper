@@ -7,9 +7,9 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.VoiceAPI;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
 import jp.mixi.android.sdk.HttpMethod;
 import jp.mixi.android.sdk.MixiContainer;
 

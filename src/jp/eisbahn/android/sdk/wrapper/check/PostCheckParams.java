@@ -1,6 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper.check;
 
-import jp.eisbahn.android.sdk.wrapper.Visibility;
+import jp.eisbahn.android.sdk.wrapper.common.Visibility;
 
 import org.json.JSONException;
 import org.json.JSONObject;

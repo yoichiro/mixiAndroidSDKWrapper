@@ -2,6 +2,9 @@ package jp.eisbahn.android.sdk.wrapper;
 
 import java.io.InputStream;
 
+import jp.eisbahn.android.sdk.wrapper.common.GetIdCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.common.Visibility;
+
 /**
  * Diary API を規定するインタフェースです.
  * @author Yoichiro Tanaka

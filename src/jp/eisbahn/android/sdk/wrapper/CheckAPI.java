@@ -1,6 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper;
 
 import jp.eisbahn.android.sdk.wrapper.check.PostCheckParams;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
 
 /**
  * Check API を規定するインタフェースです.

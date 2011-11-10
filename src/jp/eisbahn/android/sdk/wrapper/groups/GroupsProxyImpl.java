@@ -1,7 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper.groups;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.GroupsAPI;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractProxyImpl;
 import jp.mixi.android.sdk.MixiContainer;
 
 /**

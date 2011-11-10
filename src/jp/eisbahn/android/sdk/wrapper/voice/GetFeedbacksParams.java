@@ -3,7 +3,7 @@ package jp.eisbahn.android.sdk.wrapper.voice;
 import java.util.HashMap;
 import java.util.Map;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractParams;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractParams;
 
 /**
  * mixiボイスのつぶやき一覧を取得する際に指定する条件を持つクラスです.

@@ -1,5 +1,7 @@
 package jp.eisbahn.android.sdk.wrapper;
 
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.common.GetIdCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.message.GetMessagesCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.message.GetMessagesParams;
 

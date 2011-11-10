@@ -3,7 +3,7 @@ package jp.eisbahn.android.sdk.wrapper.photo;
 import java.text.ParseException;
 import java.util.Date;
 
-import jp.eisbahn.android.sdk.wrapper.Model;
+import jp.eisbahn.android.sdk.wrapper.common.Model;
 import jp.eisbahn.android.sdk.wrapper.util.DateUtils;
 
 import org.json.JSONObject;

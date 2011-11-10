@@ -2,7 +2,7 @@ package jp.eisbahn.android.sdk.wrapper.voice;
 
 import org.json.JSONObject;
 
-import jp.eisbahn.android.sdk.wrapper.Model;
+import jp.eisbahn.android.sdk.wrapper.common.Model;
 
 /**
  * フォトに関する情報を持つモデルクラスです.

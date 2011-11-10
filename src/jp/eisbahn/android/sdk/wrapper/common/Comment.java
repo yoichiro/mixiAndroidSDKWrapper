@@ -1,4 +1,4 @@
-package jp.eisbahn.android.sdk.wrapper;
+package jp.eisbahn.android.sdk.wrapper.common;
 
 import java.text.ParseException;
 import java.util.Date;

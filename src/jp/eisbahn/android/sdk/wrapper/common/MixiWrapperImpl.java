@@ -1,5 +1,18 @@
-package jp.eisbahn.android.sdk.wrapper;
+package jp.eisbahn.android.sdk.wrapper.common;
 
+import jp.eisbahn.android.sdk.wrapper.CheckAPI;
+import jp.eisbahn.android.sdk.wrapper.CheckinAPI;
+import jp.eisbahn.android.sdk.wrapper.DiaryAPI;
+import jp.eisbahn.android.sdk.wrapper.GroupsAPI;
+import jp.eisbahn.android.sdk.wrapper.MessageAPI;
+import jp.eisbahn.android.sdk.wrapper.MixiWrapper;
+import jp.eisbahn.android.sdk.wrapper.PeopleAPI;
+import jp.eisbahn.android.sdk.wrapper.PhotoAPI;
+import jp.eisbahn.android.sdk.wrapper.ProfileImageAPI;
+import jp.eisbahn.android.sdk.wrapper.RequestAPI;
+import jp.eisbahn.android.sdk.wrapper.SearchAPI;
+import jp.eisbahn.android.sdk.wrapper.UpdatesAPI;
+import jp.eisbahn.android.sdk.wrapper.VoiceAPI;
 import jp.eisbahn.android.sdk.wrapper.message.MessageProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.people.PeopleProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.people.image.ProfileImageProxyImpl;

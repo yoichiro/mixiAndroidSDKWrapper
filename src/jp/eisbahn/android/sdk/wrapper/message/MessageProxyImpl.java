@@ -4,10 +4,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
-import jp.eisbahn.android.sdk.wrapper.GetIdCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.MessageAPI;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.common.GetIdCallbackHandler;
 import jp.mixi.android.sdk.HttpMethod;
 import jp.mixi.android.sdk.MixiContainer;
 

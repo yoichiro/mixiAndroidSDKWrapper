@@ -1,5 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper;
 
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
 import jp.eisbahn.android.sdk.wrapper.request.SendRequestCallbackHandler;
 import jp.eisbahn.android.sdk.wrapper.request.SendRequestParams;
 import android.content.Context;

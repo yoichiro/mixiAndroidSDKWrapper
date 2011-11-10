@@ -1,6 +1,6 @@
 package jp.eisbahn.android.sdk.wrapper.request;
 
-import jp.eisbahn.android.sdk.wrapper.CallbackAdapter;
+import jp.eisbahn.android.sdk.wrapper.common.CallbackAdapter;
 import android.content.Context;
 import android.os.Bundle;
 

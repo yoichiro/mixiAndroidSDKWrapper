@@ -10,10 +10,10 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-import jp.eisbahn.android.sdk.wrapper.AbstractProxyImpl;
 import jp.eisbahn.android.sdk.wrapper.DiaryAPI;
-import jp.eisbahn.android.sdk.wrapper.GetIdCallbackHandler;
-import jp.eisbahn.android.sdk.wrapper.Visibility;
+import jp.eisbahn.android.sdk.wrapper.common.AbstractProxyImpl;
+import jp.eisbahn.android.sdk.wrapper.common.GetIdCallbackHandler;
+import jp.eisbahn.android.sdk.wrapper.common.Visibility;
 import jp.mixi.android.sdk.MixiContainer;
 
 /**
